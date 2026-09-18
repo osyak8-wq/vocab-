@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aki 2秒単語帳</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="2秒単語帳">
+  <meta name="theme-color" content="#0f1117">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkFraSAy56eS5Y2Y6Kqe5bizIiwgInNob3J0X25hbWUiOiAiMuenkuWNmOiqnuW4syIsICJzdGFydF91cmwiOiAiLi8iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiIzBmMTExNyIsICJ0aGVtZV9jb2xvciI6ICIjMGYxMTE3IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTFFBQUFDMENBWUFBQUE5elFZeUFBQVFBRWxFUVZSNG5PMmRDWFJVMVJtQS8rd0wyVU1JWkxJUUZnbUxJcUlvaWlpYkM2MGlGYW00VVBWUVdpdG9QVnByajlWdTJ0TjYybHFyNS9SWTBWbzNWRUJFbENxS0lvb29pSUN5a3dpRVRJQXNaSm5NSkpsSlNNLy9iREFoazh5OTgrNTk3OTA3LzNkT0RoeDlaT2E5K2Q0Ly83djN2LytOQW9lUVYxalNZZmQ3SU14UldiNDNDbXpHdGpkQUF1dFBwUTJDVy9xQ0pISGtVbW1SM05KZmhDUW1ySlJiMmk4bWtRazd4QmIrQzBsa3drNnhvMEVnSkROaHR6ZEM3Z3dTbVhCS3REWWRvVWxtUWlSbWZUSWxOTWxNeU1DTVYyR0ZkeEtaY0dvS3doMmhTV2JDU25oOTR4S2FaQ2JzZ01jN1pxRkpac0pPV1AwVE9nNU5FSGJESkRSRlo4SUpzSGdZVW1pU21YQVNvWHpzVTJpU21YQWlmWGxKT1RTaEZiMEtUZEdaY0RLOStSbFVhSktaVUlGZ25sTEtRV2hGRDZFcE9oTXFjYnF2RktFSnJlZ21ORVZuUWtXNmVrc1JtdEFLRXByUVUyaEtOd2lWNmZTWElqU2hGU1Ewb1JYR2VpMUtOd2hkb0FoTmFBVUpUV2dGQ1Uxb1JUVGx6NFJPVUlRbXRJS0VKclNDaENhMGdvUW10Q0xXN2plZ0VwTUdlK0hXYyt0aFgzVThQUHBSanBUWEtCblFDa096L2N6SCs5dWk0TDBES1ZMZWk0cVEwQ0hJU3d2QXJGRWUrT0hZZWhqZS8xdlJwZ3lOZ3BlMlpZQzdNVTc0QnpMM3JBYjR5ZmtubUkrdmE0NkJNWDhiTHZ4OXFBb0ozWXZFTTRZM3dhelJIcGhRNE92UmN6Z2h0Z1B1bjFJTmkxZmxXZk1wRWN5UTBBQVFFd1V3TnEvWmtIajZzQ1lZbGRzYThzTE5IdE1JU3pabndZNmppZXhYbTVCT1JBb2RIUVV3T3JjRkxpenl3VVdEZlVZVVRrMDR5ZlU3TUdvL05MMEtybjJoVU5yN0pQaUpDS0hURTl2aEhGY0xqSGMxdy9qOFpoaVgxOHd0Y0RBdUtQVEJGU004OE02K1ZDSHZrekNQZGtMMzc5ZHVSTjh6QjdiQW1JSDRaeXNVWmZxbDdURDZ3TlJxZVA5QUNyU2R0SDNmZGtKVm9USGlGbVFFb0NBOUFQa1pBUmlXN1ljeityY2FveENaU2UyV3ZwY2hXWDZZUDc0ZW50MlNDVTRqSTZrZGhtYjVqV0hBSWRuK1UzOHZyWTJIaFN0Y29DUEtDWTF4OFBORlpVSlNCbEVzUFA4RVBMODFvMXVVUG5EZmZtaHJqd0t2UHdxOGdXancrYU5QL2VrTDRIK1BObjU4Z1doWXZUc1ZkaDAzLzNCNTY3bDF4amNUU29zL3ZkM2NHWW5XM3ZSV29welF1Qkp5NTdGRW1GamtzL3V0d0ZaM0VyeTJJeDFXN2tyckpuTksvRWxJampzSkVBZVF4dURwbCs0azJIWGMvUHVaUGFiUmVFNElSVzVxRzdqU0FsTEcwZTFHT2FFUkhDcXpRMmk4bWJhN2syRE52aFI0YzNjYVZEUUVGeUlybVM4Q0h2T0krUmoyVlNjd0NZM2c5VnYrZFRyb2hySkNXOFVKWHd4c1BKd002OHRTWUYxcFA2ajJocjVrZGdtOXZ5YWUrZGlMaTBsb3g3RGphSklsSXQrd3RNQkliM2kzTmMxUER6QWYyOTRCVU1Od2s3Q3d0eXFCK2RoTGh6UVp6eVBDZG8xM0NFcFcyeDJ1aTRQNjVoaXByNEVQYTErSElUTlNuTWxlWEZUVEZBc25CVm0xdlRLSitYZmg4T2JZdkJiUURTV0ZSbEEycDFLVXlSNmhLd1ErbUhsYW82RzBsajFLWHpiY0E3cWhyTkFzZVhScld4VHNxVXFBMVh0UzRiR1ArME5qaTl5bzNrbHhGbnVFTHVYSWUxbllXc0dlamwwK29nbDBROG1IUW1SN1phSWhhTFUzQnFxYVlvMGhLSGRETEJ4cGlJTkRkZkZHV25LME1hNWJ5akR2N0hxbVlUUXpZRjZLTTVXczRDU0hTTDZvU0RMT2s0V1NuRllZbk9rM3JwY3VLQ3YwZi9lbEdqOU9BNmZaZVNaOWVGSUVGalllU3VZNi92c2pQZkRrcDltZ0M4cW1IRTRGYTBkNEVKMXlIR21JTTc2ZGVJVFdDUkphTUdjTllrODMvTzFSVUY0dmZyWnV3OEYrek1maVZEbW1IYnBBUWdzR2E2dFp3VEZ1R1ZWNkd6aUVSbkJsamk2UTBBSkppanNKWjNPTTdYN3Bsdk9FK3ZIQmZoQm9aNzlSWm8xcUJGMGdvUVdDZFJTeDBleXpKTnNxNWN4NGVscWo0ZFBEN0ErSEkzSmFtWmFkcVFBSkxSQmMwc1hETnJlOEtmeDM5dk9OQUYwN3BnRjBnSVFXeU9SaWRxRnJmVEZ3V01JRFlTZnY3ay9obXJiL3daaEdZN0d3NmlnNUR2M1N2Q053NlJDdjFOZkFBaVAzQTN2N1BPYXB6N1BnOSs4UDZGSWJ3VmE2R2M2REd5L0hQYkZHcWVzNHhuTFNBU2x0Y09uUUpsaFhxbmJUR29yUWdwZzJyTWxZVGM3SytqSzVRaU52N0U0REhtNGN4emJENkdSSWFFRmdQdzlXTUJYNDZCdjVRcS9hbFdxVXA3SXliWmpYV00yaU1pUzBBQkpqTytBU2poUm8xN0ZFcG9VQ1pxbjJ4c0xHUSt3M0RvN1EzS1I0bENhaEJYRFpHUjdvRjg5ZXY0RXJYNnppOVoxOGFRY0tIUmVqYnRrL0NTMkFPV2Z5VFV5OHNZdFBNak9zMlpzS1RYNzJqeGtmRG1lUFZuZWloWVEyQ2E0ZjVFazNkaDlQZ1AwMVlpdnMrc0xyajRhVm5GSDZweGVja05hWVJ6WWt0RW11R2QzSU5UdUlMUStzNW9Vdk03aU94NW5ESzB2VXJPOGdvVTB5LzV3NjVtTTdMRTQzT3NFbU5yeXprdmRNcnVFYWhuUUtKTFFKSmhkN1R6VkJaK0hEMGhTb3RLbTV5ek9jcmNwd05jdWNNOVdiRGxkeXB2REdwUVZjeDJPZzJiU296T2lGeHdvMmtUbi95YUY5SHZPZnVSVXdjZ0I3VWM4U0cvdmZyZDZUQ3ZkUGllTnFzZkNyS2RXd2FuZWFzVFpURlNJaVFrOHE5bkxKekxxeWV5ckhaTXFCbW5qWVlNRmtTbTlnM1RWTzFiT21SdGdpK01aWENwU1NXZGtJemN2MVk4Vi9kZDU1RVYrT3VXUkxsdTFOWFpadVQ0ZTdKOVgwMmRrSmk1cit1cUcva09hUmRxQjloTWJXdTFlTzRIOWl4NGFMV0xBZmpLS01BTmZZTTY1S1gvRzE5UStEcDlNY2lJWW5lbGtRaXp0cFhmSE1ZTGh0V2I2eU1rZUUwRGp6aFp2OGhOTmIrWGN6cW9MK3Y3c20xWEFOMVQyK01kdVF5UWs4OTBWbXR5YVQ3LzlmNUZ0ZXkzZDA4eDVXdEU0NVVEcnNtUnd1V0gyR0xYTmYzWkhlclc1aituRDIzQmtYd2VJV2NFN0IzeDRGajY3UGdWbWpHK0V2Ry9yRFY1cHRldVNNc0NHSnEwZDVZRkNhdWVxeFAxMTVEQ1lVZkZkVDNOSVdCVlAvTlFSV01NNitZVDdLczc3UENsYnNUSVA1citacko3UDJRdk5zWU5rYjhURWQ4Ty9yS3JxTk45ZDRZK0RPVlhsdzNZdUZmWFkrUW1GZTMrbXNIc3k1cVcyd2RzRWg0OXRINVNLa2lCTWFkNmZDVFlORWdQbjAwbm5sUGNad2NTSHE5S2VMalcyU01YSjNCZXVRZjdGbW9MRE9vcUo0YUZxVjBhcnMwWm5INExNN3ltREJoTHBlSDM1VlJFdWhVYTE3THE0Uitqc3hkVmwyVTdteHkyeFhNSjE0L0pOc21QclVFUGlneXlxVXB6L1BNdnB1T0ltSmhUNmo5cVNUZ2FsdDhMc1p4NDA5YXhaZldPdW9mV3ZDUlV1aFo0NzBTRm1XWDVnUmdPVTM5NHpVQ0M1NHZmbVZBbGo0dWdzMkgwa3lIcmpDVFhGa0VCZlRBWTljRVh3amwremtkbU9yNTgyTHl1QytTNm90MzBsTUpOb0pqU3VYUlVmbjA4ZWdWODR2NzdWbDd0dDdVbUgyODBWaEQ5UGhwcUF5dUhkeWpWRkYxeGRwaWUxdzE2UmEyTHk0REg0enZjcW9qVllON1lTK1lWeDl5QS9PTEpoMnZESC9zTEFjSGFNbmJzT0dlUzFQNXlWV3puRTF3KzBUYTVtUHh4MjhjS3U2OXhZY0RHc00zMDYwR29mR0hQRGV5ZFdXdkJhMkxWaCtVemtzV082Q1QvcFl0NGV5SHJ4L24yMEY4OGx4SitIdlZ4ME5xK2ZHUHovTFZxNldRNnNJdmZpaVdrTTBLMitnbCtaVjlOa2JEaDhhcTV2a3hZMk9FQUgwenpPUEdkR2ZGMnlDemx0eTZnUzBFUnB6Mng5UE1EL3VITTVzWktpdjVkNzJNeFJCWTJ2djIyek1IMTl2ZEVRS0IyeWc0N1FKb1loS09SNisvTGkwRVlKUVcyTXMreW85cE5DWXg4cmdhR1B3ai9Ec3ZCWmpTQzVjbnIydTR0VGZYWStVZ0Nwb0lmVE1FZzlYYmJJbzhQWjVhRzF1eUxKUW1SRTZXSmZSZ3ZRQVBEZTNRdGdOSHF3bG1sTWxWMTVvekdNZnZrekFSdG1uZ1pzUTRZNVNWL2VSSDJQUEN5eGVDa1ZGZzV6TEhHeU5ZbHBpTzN5MnFBeGswMVZ5SjhtdHZOQVBUcXVTMHI0S0g3YnVlbk1RREV3TmRDdE82cm94NXlNZmZOdW9FV3lLMEZqRjk4Mko3MnBKM0NHYVM4cWk4M1dkSUhhczZvdFVaVFlZeEZMTFc1Zmx3NXMvT3R4anBPQ0pqZGxHaDA4VzNCS0V4bzJCL3ZoQmptMFNPelZxS3p2S2dRVkRqMTExbEd2VlNEamJLZU8vd1QyL3UwWlpySEZtWFo4bkkwTGpqWFQ5eTRXdys1NEQ0RlRjTnQxb3lncU5zMnBZWE1QS2I5OGIwS01pamtmSXVTOFduaHBSK01PNkFWd1REdGlLcTBIUUxyWTRxb0lwMXFZNzVPZkpJcVMyV213bGhiN3R2RHI0SGtkbkgyeGRpOHZ4ellERlIzTmVMRFNLNDdGZkhDOW1velRlRkZqd0pHTnFYRFpXU3EyYzBQaUFob1V6ck9ERDJ5L1hEQlR5MmpoN2hvWDk0Y0E3MG9HVEd0aVVadjAzL2VEWDcrWWFpM2F4d0VoVjNCWkY2MWpWWmdPWHpLbmdXcUNLRDA2NHU2cmQ0R3JxY0hIU2c1OVo4RnhrUGpBcUU2RnorclVaZTZ0ZzdTN1B2dGU0eWxsbGRKTFppbk5TUnVoSmczMjkxaUFIbzdFbEJ1NWVQY2oyNWk1bTBGRm0yZWVtak5EWWh2YjVyZXp0QUhBOUg4NzJxWXJPTXNzOFIyV0VSaDVjbXd1YnlwT1oraUcvdFlkL0pNSXBSSUxNc3M1VkthR3g0ZURDRmE0K2g4Q3dEektLcnlxUkpMT01jMVpLYU9TRUw4YVlqZzYyWnUrWUp4WVdySEFwV2NjYnFUS0xQbmZsaE83Y3ArVG5xd2YxbUhqQWJrQW90V3JnR3NoSWxya1RFZGRBU2FFUnpKSC9zZkhiVHBvNERZM05CbFhybW5sZWZyTlJTTDl1NFVHNzM0bzJxQmZPdW9CTkI3SHgrTXZiMG1GVGtFSjNKNEpkaW5CWjFDM2o2NlQwRG9uMGlSZWxoY1l4NXArdERHOHEybzRwZTl5ekJCY002TkNoeUtsU0t5MjAwOEcrSFROSGVPQ2FNWTNHdEQwaEh4SmFJTGlHNzd5Q1pwZ3h2TW5ZTllCbmd4NUNUSlFtb1UyQXpWdEc1cmJBeENJZlhGTHNoUXNLbTdYcTVLbWkxQ1IwR09EV3dWT0dlbzArZER5YjFoUHlJYUhEQVBzclR4ck12cjgzWVIzS2prUGJ5ZHRockZnaHJKbHNJYUhENE1PeUZQRDY2ZEk1RWZwVXdnQm5KdGVWcG9qL05BalRVWnFFRGhPVnkxTjFob1FPRTl4UEJSZmdFczZDUHBFd3dmTFZEMHZ0MjR3KzBuQXpwaDBrdEFuZTRoanR3TDRlaEh4b0hOb0V1RTgyZG1QQzdaS0Q5WjdiVXBFTVd5cVNqRXJBc3RwNHFubTJBQkxhQkpoRHI5MmZDbWZrdE1MZXFnVGpaMDkxQXV5b1RJUnFMMTFhTzZDcmJwTGJGU2xmalJTaThncExWRzVkb1F5MHhFb01vWXFWNktHUTBBb1NtdEFLRXByUUNoS2EwQW9TbXRBS0VwclFDaEthMEFvU210QUtFcHJRQ2hLYTBBb1NtdEFLRXRvaW5MQVBkaVJjUXhLYTBBb1NtdEFLRXByUUNoS2EwQW9TMmtMb3dWRCt0U09oQ2EwZ29RbXRJS0V0aHRJT3VkZU1oQ2EwSXJxeWZLK2EyNjRxREVWcGVkZUtJalNoRlNRMG9SVWt0RTFRMmlIbkdobENVeDV0RHlTMTJHdURIbE9FSnJTQ2hMWVppdEppcjhrcG9TbnRzQStTMnZ5MTZQU1hJalNoRlNTMFE2QW9EVUt1UVRlaEtlMndsMGlXMm1YaTNMdDZTeEhhWVVTaTFDNkI1OXhEYUlyUzloTkpVcnRNbnV2cHZsS0VkaWlSSUxWTHdqa0dGWnFpdERQUVdXcVhnSE1MNW1tdkVacWtkZ1k2U3UyU0pETkNLWWNDNkNTMVMvSzVoQ3p1cDIzZm5JV3EyOE81QklyY1YvWVFNa0pUNnVFc1ZJeldMb3RrUnBpWFgxR2tkaDVPajlZdXdUY2ZTM0NsSEZwaG5CeXRYVGE5TjY0RnNoU2xuWTNiNW9ndFUyTFcxSmQ3eFRkSjdYemNGb3N0T3hyelBNZUYxY0tBcEZZSHR5UzVyVW9wZUFjbFRQWGtJTEVqUTNLWERmbHd1S05ycHB2TWtOU0VhTXdNRlpzZTVhQnhha0lrWm4wUzJnYU1valZoZDJBVU9nNU4wWnF3Mnh0cGpSb3BXaE4yQkVEcG5VZEpiTUxLYjNKTFcrbVMzSkZMcFVWdG0yM3JEVTF5NjArbERiM0gvd2VkWEtZanZSbDJ5Z0FBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICIxODB4MTgwIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn1dfQ==">
+
+<style>
+  :root{
+    --bg:#0f1117; --card:#1a1e28; --card2:#232836; --accent:#ff9900;
+    --ok:#2ecc71; --ng:#e74c3c; --txt:#e8eaed; --sub:#9aa0aa; --line:#2d3340;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{margin:0;font-family:-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+    background:var(--bg);color:var(--txt);min-height:100vh;}
+  header{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;
+    align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+  h1{font-size:17px;margin:0;font-weight:700;}
+  h1 span{color:var(--accent);}
+  .tabs{display:flex;gap:6px;}
+  .tab{background:var(--card);border:1px solid var(--line);color:var(--sub);
+    padding:7px 14px;border-radius:8px;cursor:pointer;font-size:13px;}
+  .tab.active{background:var(--accent);color:#111;border-color:var(--accent);font-weight:700;}
+  .wrap{max-width:720px;margin:0 auto;padding:18px;}
+  /* progress bar */
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .stat{flex:1;min-width:90px;background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:12px;text-align:center;}
+  .stat b{display:block;font-size:22px;color:var(--accent);}
+  .stat small{color:var(--sub);font-size:11px;}
+  .mbar{height:10px;background:var(--card2);border-radius:6px;overflow:hidden;margin:6px 0 18px;}
+  .mbar>i{display:block;height:100%;background:linear-gradient(90deg,#ff9900,#2ecc71);width:0;transition:width .4s;}
+  /* study card */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:34px 22px;text-align:center;position:relative;min-height:230px;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;}
+  .timerbar{position:absolute;top:0;left:0;height:5px;background:var(--accent);
+    border-radius:16px 0 0 0;width:100%;}
+  .front{font-size:30px;font-weight:700;line-height:1.3;}
+  .front.sentence{font-size:24px;font-weight:600;line-height:1.55;}
+  .front b{color:var(--accent);font-weight:800;}
+  .cat{font-size:12px;color:var(--sub);margin-bottom:14px;letter-spacing:.5px;}
+  .back{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);width:100%;display:none;}
+  .back.show{display:block;}
+  .mean{font-size:22px;color:var(--accent);font-weight:700;}
+  .ex{font-size:16px;color:var(--sub);margin-top:10px;line-height:1.6;}
+  .lvpill{position:absolute;top:12px;right:14px;font-size:11px;color:var(--sub);
+    background:var(--card2);padding:3px 9px;border-radius:20px;}
+  .hint{text-align:center;color:var(--sub);font-size:12px;margin-top:14px;min-height:18px;}
+  .btns{display:flex;gap:10px;margin-top:16px;}
+  .btn{flex:1;padding:16px;border:none;border-radius:12px;font-size:16px;font-weight:700;
+    cursor:pointer;color:#fff;}
+  .btn.ng{background:var(--ng);} .btn.ok{background:var(--ok);}
+  .btn.rev{background:var(--card2);color:var(--txt);border:1px solid var(--line);}
+  .expired{color:var(--ng);font-weight:700;font-size:13px;margin-top:8px;height:16px;}
+  .done{text-align:center;padding:40px 10px;}
+  .done h2{color:var(--ok);}
+  .modebar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+  .chip{background:var(--card);border:1px solid var(--line);color:var(--sub);
+    padding:6px 12px;border-radius:20px;font-size:12px;cursor:pointer;}
+  .chip.active{background:var(--card2);color:var(--accent);border-color:var(--accent);}
+  /* list & manage */
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);}
+  th{color:var(--sub);font-weight:600;font-size:11px;}
+  .lv{display:inline-block;width:22px;text-align:center;border-radius:4px;font-size:11px;padding:2px 0;}
+  textarea{width:100%;min-height:110px;background:var(--card);color:var(--txt);
+    border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px;font-family:monospace;}
+  input.f{background:var(--card);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:9px;font-size:13px;width:100%;margin-bottom:8px;}
+  .abtn{background:var(--accent);color:#111;border:none;border-radius:8px;padding:10px 16px;
+    font-weight:700;cursor:pointer;font-size:13px;}
+  .dbtn{background:none;border:none;color:var(--ng);cursor:pointer;font-size:12px;}
+  .note{color:var(--sub);font-size:12px;line-height:1.6;}
+  .seg{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:4px 0 16px;font-size:0;}
+  .seg>i{height:100%;}
+</style>
+</head>
+<body>
+<header>
+  <h1><span>Aki</span> 2秒単語帳</h1>
+  <div class="tabs">
+    <div class="tab active" data-tab="study">学習</div>
+    <div class="tab" data-tab="list">一覧</div>
+    <div class="tab" data-tab="manage">追加</div>
+  </div>
+</header>
+<div class="wrap">
+
+  <!-- ===== STUDY ===== -->
+  <section id="study">
+    <div class="stats">
+      <div class="stat"><b id="s-known">0</b><small>分かった(Lv1+)</small></div>
+      <div class="stat"><b id="s-master">0</b><small>習得(Lv5)</small></div>
+      <div class="stat"><b id="s-total">0</b><small>総単語</small></div>
+      <div class="stat"><b id="s-due">0</b><small>今の出題対象</small></div>
+      <div class="stat"><b id="s-streak">0</b><small>連続学習日</small></div>
+    </div>
+    <div class="mbar"><i id="mfill"></i></div>
+    <div class="modebar">
+      <span style="color:var(--sub);font-size:12px;align-self:center;">モード:</span>
+      <div class="chip active" data-mode="due">要復習(スマート)</div>
+      <div class="chip" data-mode="weak">苦手だけ</div>
+      <div class="chip" data-mode="all">全部</div>
+    </div>
+    <div class="modebar">
+      <span style="color:var(--sub);font-size:12px;align-self:center;">分野:</span>
+      <div class="chip active" data-grp="all">すべて</div>
+      <div class="chip" data-grp="work">Amazon業務</div>
+      <div class="chip" data-grp="daily">日常</div>
+    </div>
+    <div class="modebar">
+      <span style="color:var(--sub);font-size:12px;align-self:center;">表示:</span>
+      <div class="chip active" data-view="word">単語</div>
+      <div class="chip" data-view="sentence">例文(単語を太字)</div>
+    </div>
+    <div class="modebar">
+      <span style="color:var(--sub);font-size:12px;align-self:center;">品詞:</span>
+      <div class="chip active" data-pos="all">すべて</div>
+      <div class="chip" data-pos="verb">動詞</div>
+      <div class="chip" data-pos="adj">形容詞</div>
+      <div class="chip" data-pos="noun">名詞</div>
+      <div class="chip" data-pos="adv">副詞</div>
+      <div class="chip" data-pos="phrase">熟語・表現</div>
+    </div>
+
+    <div class="modebar" style="margin-top:-6px;">
+      <span style="color:var(--sub);font-size:12px;align-self:center;">音声:</span>
+      <div class="chip active" id="autoSpeak">出題時に自動読み上げ ON</div>
+      <div class="chip" id="speakRate">速さ: 標準</div>
+    </div>
+
+    <div id="cardArea">
+      <div class="card" id="card">
+        <div class="timerbar" id="tbar"></div>
+        <div class="lvpill" id="lvpill">Lv0</div>
+        <div class="cat" id="cat"></div>
+        <div class="front" id="front">Start</div>
+        <button id="spkBtn" title="発音を聞く (S)" onclick="speakCur()" style="margin-top:10px;background:var(--card2);border:1px solid var(--line);color:var(--accent);border-radius:20px;padding:7px 16px;font-size:14px;cursor:pointer;">🔊 発音 (S)</button>
+        <div class="expired" id="expired"></div>
+        <div class="back" id="back">
+          <div class="mean" id="mean"></div>
+          <div class="ex" id="ex"></div>
+        </div>
+      </div>
+      <div class="hint" id="hint">「開始」でスタート。英語が出たら2秒以内に意味を思い出す。</div>
+      <div class="btns" id="btnStart">
+        <button class="btn ok" onclick="startSession()">開始</button>
+      </div>
+      <div class="btns" id="btnFront" style="display:none;">
+        <button class="btn ng" onclick="dontKnow()">分からなかった (←)</button>
+        <button class="btn ok" onclick="knowIt()">分かった (→)</button>
+      </div>
+      <div id="peekWrap" style="text-align:center;margin-top:10px;display:none;">
+        <button class="dbtn" style="color:var(--sub)" onclick="peekMeaning()">意味だけ確認する (Space)</button>
+      </div>
+      <div class="btns" id="btnNext" style="display:none;">
+        <button class="btn rev" onclick="next()">次へ (Space / → / ←)</button>
+      </div>
+    </div>
+
+    <div class="done" id="doneMsg" style="display:none;">
+      <h2>ラウンド完了！</h2>
+      <p class="note" id="doneStat"></p>
+      <button class="abtn" onclick="startSession()">もう1ラウンド</button>
+    </div>
+  </section>
+
+  <!-- ===== LIST ===== -->
+  <section id="list" style="display:none;">
+    <div class="modebar" id="listGrpFilters">
+      <div class="chip active" data-g="all">すべての分野</div>
+      <div class="chip" data-g="work">💼 Amazon業務</div>
+      <div class="chip" data-g="daily">🏠 日常</div>
+    </div>
+    <div class="modebar" id="listFilters">
+      <div class="chip active" data-f="all">全部</div>
+      <div class="chip" data-f="mastered">習得(Lv5)</div>
+      <div class="chip" data-f="weak">苦手</div>
+      <div class="chip" data-f="learning">学習中</div>
+      <div class="chip" data-f="new">未学習</div>
+    </div>
+    <div class="seg" id="lvseg"></div>
+    <p class="note" id="listNote"></p>
+    <table><thead><tr><th>Lv</th><th>分野</th><th>English</th><th>意味</th><th>正/誤</th><th></th></tr></thead>
+    <tbody id="listBody"></tbody></table>
+  </section>
+
+  <!-- ===== MANAGE ===== -->
+  <section id="manage" style="display:none;">
+    <h3 style="font-size:15px;">1件だけ追加</h3>
+    <input class="f" id="addEn" placeholder="English (例: reach out)">
+    <input class="f" id="addJa" placeholder="意味 (例: 連絡する / 声をかける)">
+    <input class="f" id="addEx" placeholder="例文・メモ (任意)">
+    <button class="abtn" onclick="addOne()">追加する</button>
+
+    <h3 style="font-size:15px;margin-top:26px;">まとめて貼り付けインポート</h3>
+    <p class="note">1行1語。<b>英語[タブ]意味[タブ]例文</b> の順（例文は省略可）。タブでもカンマでもOK。既存語はスキップ。</p>
+    <textarea id="bulk" placeholder="reach out	連絡する	Sorry to reach out on your day off.
+stabilize	安定させる	We plan to readjust the Ov to stabilize the SPR."></textarea>
+    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="abtn" onclick="importBulk()">インポート</button>
+      <button class="dbtn" onclick="exportAll()">エクスポート(バックアップ)</button>
+      <button class="dbtn" onclick="resetProgress()">進捗だけリセット</button>
+    </div>
+    <p class="note" id="manageMsg"></p>
+  </section>
+
+</div>
+<script>
+/* ---------- seed vocabulary: Akiの翻訳依頼で実際に登場した業務英語 ---------- */
+const SEED = [
+ ["reach out","連絡する / 声をかける","Sorry to reach out during your day off.","email"],
+ ["make arrangements","手配する / 段取りする","I've already shared it and made the arrangements.","email"],
+ ["would you be able to help","手伝っていただけますか","Would you be able to help with this...?","email"],
+ ["summarize","要約する / まとめる","Would it be better to summarize it in a doc?","email"],
+ ["as we discussed","先ほど話し合った件について","Regarding what we just discussed...","email"],
+ ["driver (of)","主因 / 要因","The main driver of this is the increase in Ov.","ops"],
+ ["decline","減少する / 下がる","SPR declined to 62.36 in WK35.","ops"],
+ ["readjust","再調整する","We plan to readjust the Ov settings.","ops"],
+ ["stabilize","安定させる","...in order to stabilize the SPR.","ops"],
+ ["slide over","(次工程へ)ずれ込む","Packages slid over to C2.","ops"],
+ ["recorded under","〜として計上される","...were recorded under cluster_transfer.","ops"],
+ ["absence rate","欠勤率","Due to a rise in the C1 absence rate.","ops"],
+ ["erode","蝕む / 削る","This eroded OTD.","ops"],
+ ["absorbed in","〜に没頭している","Julie-san and I are absorbed in OPS.","casual"],
+ ["power outage","停電","When was the next power outage scheduled?","ops"],
+ ["scheduled","予定されている","...is scheduled to increase to 15%.","email"],
+ ["lack of experience","経験不足","NA booked due to lack of experience.","ops"],
+ ["as a result","結果として","As a result, they ended up as a Break.","email"],
+ ["in addition","加えて / さらに","In addition, this caused a delay.","email"],
+ ["occur","発生する","Five FLEX cancellations occurred in C3.","ops"],
+ ["reduce / reduction","減らす / 削減","...reducing OTR Capacity.","ops"],
+ ["delay","遅延","...caused a delay in Cycle 2's P&S.","ops"],
+ ["impact","影響","We received a report of this impact.","ops"],
+ ["factor","要因","Excess is one factor.","ops"],
+ ["due to","〜が原因で","NA booked due to lack of experience.","email"],
+ ["end up as","結局〜になる","...ended up as a Break.","ops"],
+ ["apply (a rate)","(率を)適用する","Please apply 40% to the Recovery Block.","ops"],
+ ["on your day off","休日中に","Sorry to reach out on your day off.","email"],
+ ["regarding","〜について / 〜に関して","Regarding what we discussed...","email"],
+ ["adjust","調整する","We adjusted the Ov% in Asana.","email"],
+ ["current / currently","現在の / 現在","We currently plan to readjust it.","email"],
+ ["overall","全体として / 総じて","Overall OTD was 96%.","ops"],
+ ["excess","超過 / 過剰","Excess is one factor.","ops"],
+ ["shortage","不足","Due to a shortage of drivers.","ops"],
+ ["appreciate","感謝する","I really appreciate your help.","email"],
+ ["let me know","教えてください","Let me know if you have questions.","email"],
+ ["follow up","フォローする / 後追いする","I'll follow up with the team.","email"],
+ ["reach out to","〜に連絡する","I'll reach out to Giacomo-san.","email"],
+ ["heads up","事前のお知らせ","Just a heads up before the meeting.","email"],
+ ["on track","順調に進んで","We're on track to hit the target.","email"],
+ ["at risk","未達の恐れがある","Attainment is at risk this week.","ops"],
+ ["root cause","根本原因","The root cause was a SUI input miss.","ops"],
+ ["workaround","暫定対応 / 回避策","We applied a workaround for now.","ops"],
+ ["ramp up","増やす / 立ち上げる","We'll ramp up capacity next week.","ops"],
+ ["ramp down","縮小する","Volume is ramping down after peak.","ops"],
+ ["escalate","上位に報告・エスカレする","I escalated the issue to the manager.","email"],
+ ["align","認識を合わせる","Let's align on the plan tomorrow.","email"],
+ ["going forward","今後は","Going forward, we'll monitor Ov daily.","email"],
+ ["accordingly","それに応じて","We'll adjust the plan accordingly.","email"],
+ ["mitigate","(影響を)緩和する","...to mitigate the OTD risk.","ops"],
+ ["attribute to","〜に起因する","The miss is attributed to weather.","ops"],
+ ["breakdown","内訳","Here's the breakdown by cycle.","ops"],
+ ["threshold","閾値 / 基準値","Ov exceeded the threshold.","ops"],
+ ["capacity","処理能力 / キャパ","OTR capacity decreased.","ops"],
+ ["ahead of","〜より前に","Ahead of the meeting, I'll share the doc.","email"],
+ ["appreciate your patience","お待ちいただき感謝","Appreciate your patience on this.","email"],
+ ["get back to you","折り返し連絡する","I'll get back to you by EOD.","email"],
+ ["by EOD","終業までに","I'll send it by EOD.","email"],
+ ["for your reference","ご参考までに","Attached for your reference.","email"],
+ ["on my end","こちら側では","No issues on my end.","email"],
+ ["circle back","改めて連絡する","Let's circle back next week.","email"],
+ ["take into account","考慮に入れる","We took the forecast into account.","email"],
+ ["bottleneck","ボトルネック / 停滞点","Sort is the bottleneck today.","ops"],
+ ["turnaround","対応の速さ / 折り返し","Thanks for the quick turnaround.","email"],
+ ["kick off","開始する","We'll kick off the project Monday.","email"],
+ ["wrap up","締めくくる / 終える","Let's wrap up by 5pm.","email"],
+ ["touch base","近況を確認し合う","Let's touch base next week.","email"],
+ ["loop in","(人を)情報共有に加える","I'll loop in Giacomo-san.","email"],
+ ["flag","指摘する / 注意喚起する","I flagged the risk to my manager.","email"],
+ ["pending","保留中の / 未処理の","The approval is still pending.","email"],
+ ["outstanding","未対応の / 未解決の","Two items are still outstanding.","email"],
+ ["deliverable","成果物","The deliverable is due Friday.","email"],
+ ["scope","範囲 / 対象","That's out of scope for now.","email"],
+ ["prioritize","優先順位をつける","We prioritized OTD recovery.","email"],
+ ["deprioritize","優先度を下げる","We deprioritized that task.","email"],
+ ["leverage","活用する","We can leverage the forecast data.","email"],
+ ["streamline","効率化する / 簡素化する","We streamlined the sort process.","ops"],
+ ["redundant","重複した / 冗長な","This step is redundant.","email"],
+ ["discrepancy","不一致 / 食い違い","There's a discrepancy in the counts.","ops"],
+ ["variance","差異 / ばらつき","The variance vs plan was 5%.","ops"],
+ ["baseline","基準値 / ベースライン","Compared to the baseline.","ops"],
+ ["benchmark","基準 / 比較指標","We benchmarked against DTK4.","ops"],
+ ["forecast","予測 / フォーキャスト","The forecast shows a peak Friday.","ops"],
+ ["projection","見通し / 予測値","Based on current projections.","ops"],
+ ["utilization","稼働率 / 使用率","Van utilization was low.","ops"],
+ ["downtime","停止時間 / ダウンタイム","We had 30 min of downtime.","ops"],
+ ["backlog","滞留 / 未処理分","We cleared the backlog.","ops"],
+ ["throughput","処理量 / スループット","Sort throughput improved.","ops"],
+ ["headcount","人員数 / HC","We're short on headcount.","ops"],
+ ["staffing","人員配置","Staffing was insufficient.","ops"],
+ ["onboarding","受け入れ / 立ち上げ教育","Onboarding takes two weeks.","ops"],
+ ["coverage","(人員の)充足 / カバー","We had full coverage today.","ops"],
+ ["contingency","不測時対応 / 予備策","We have a contingency plan.","ops"],
+ ["remediation","是正 / 改善対応","A remediation plan is in place.","ops"],
+ ["corrective action","是正措置","We took corrective action.","ops"],
+ ["compliance","遵守 / コンプライアンス","Safety compliance is 100%.","ops"],
+ ["deviation","逸脱 / ずれ","A deviation from SOP occurred.","ops"],
+ ["per SOP","手順書どおりに","Handle it per SOP.","ops"],
+ ["as needed","必要に応じて","Adjust as needed.","email"],
+ ["on hold","保留中で","The plan is on hold.","email"],
+ ["in progress","進行中で","The fix is in progress.","email"],
+ ["resolved","解決済みの","The issue is resolved.","email"],
+ ["sign off","承認する / 決裁する","The manager signed off on it.","email"],
+ ["walk through","順を追って説明する","Let me walk you through it.","email"],
+ ["clarify","明確にする","Could you clarify this point?","email"],
+ ["confirm","確認する","Please confirm receipt.","email"],
+ ["acknowledge","受領・了解を伝える","Acknowledged, thank you.","email"],
+ ["proceed","進める / 実行する","Shall we proceed?","email"],
+ ["hold off","見送る / 待つ","Let's hold off until Monday.","email"],
+ ["revisit","再検討する","We'll revisit this next week.","email"],
+ ["outline","概要を示す","I'll outline the steps.","email"],
+ ["recap","要点をまとめる / おさらい","Quick recap of today's call.","email"],
+ ["takeaway","要点 / 学び","The key takeaway is...","email"],
+ ["action item","対応事項 / アクション","Here are the action items.","email"],
+ ["owner","担当者 / 責任者","Who is the owner of this?","email"],
+ ["due date","期限","The due date is Friday.","email"],
+ ["overdue","期限超過の","This task is overdue.","email"],
+ ["ETA","到着・完了予定時刻","What's the ETA?","ops"],
+ ["lead time","所要期間 / リードタイム","The lead time is 3 days.","ops"],
+ ["in the meantime","その間に / 差し当たり","In the meantime, monitor Ov.","email"],
+ ["moving forward","今後は","Moving forward, we'll track daily.","email"],
+ ["per your request","ご依頼のとおり","Per your request, attached.","email"],
+ ["at your earliest convenience","ご都合のつき次第","Reply at your earliest convenience.","email"],
+ ["on it","対応中です / やります","I'm on it.","casual"],
+ ["good to go","準備OK / 問題なし","We're good to go.","casual"],
+ ["blocker","阻害要因 / 障害","The main blocker is staffing.","email"],
+ ["workstream","作業系統 / ワークストリーム","This workstream is on track.","email"],
+ ["linehaul","幹線輸送 / 拠点間輸送","The linehaul arrival was delayed.","ops"],
+ ["transit","輸送中 / 通過","Packages are still in transit.","ops"],
+ ["origin","発地 / 起点","Sorted by origin station.","ops"],
+ ["arrival","到着","Expected arrival is 14:00.","ops"],
+ ["expected","見込みの / 予定の","The expected volume is high.","ops"],
+ ["planned","計画された / 予定の","Planned vs actual comparison.","ops"],
+ ["delayed","遅延した","The linehaul is delayed.","ops"],
+ ["mapping","対応づけ / マッピング","Route mapping is complete.","ops"],
+ ["controllable","管理可能な / 自責の","Controllable misses increased.","ops"],
+ ["failure","不具合 / 失敗","A scan failure occurred.","ops"],
+ ["available","対応可能な / 空いている","Are you available at 3pm?","email"],
+ ["improvement","改善","We see an improvement in OTD.","ops"],
+ ["issue","問題 / 課題","We're seeing an issue with scans.","ops"],
+ ["launch","開始 / 立ち上げ","The new workflow launch is Monday.","ops"],
+ ["request","依頼 / 要求","I sent a request to the team.","email"],
+ ["upload","アップロードする","I uploaded the PPH to Horizon.","ops"],
+ ["scan","スキャンする / 読み取る","Please scan every package.","ops"],
+ ["warning","警告","A warning appeared on the app.","ops"],
+ ["support","支援 / サポート","Thank you for your support.","email"],
+ ["communication","連絡 / 意思疎通","Good communication with DSP.","email"],
+ ["external","社外の / 外部の","This is an external channel.","email"],
+ ["error","エラー / 誤り","There was an input error.","ops"],
+ ["status","状況 / ステータス","What's the status of this?","email"],
+ ["detail","詳細","See the details below.","email"],
+ ["input","入力","An input miss caused the gap.","ops"],
+ ["dispatch","出庫 / 発送","Dispatch started on time.","ops"],
+ ["contact","連絡する / 連絡先","I'll contact the driver.","email"],
+ ["performance","実績 / パフォーマンス","Weekly performance review.","ops"],
+ ["target","目標","We hit the target this week.","ops"],
+ ["reminder","催促 / リマインド","Just a friendly reminder.","email"],
+ ["incident","事案 / インシデント","A safety incident was reported.","ops"],
+ ["operation","運用 / 業務","The operation ran smoothly.","ops"],
+ ["comparison","比較","A plan vs actual comparison.","ops"],
+ ["access","アクセス / 利用権","I don't have access to the tool.","email"],
+ ["update","更新する / 最新情報","I'll update you by EOD.","email"],
+ ["program","施策 / プログラム","The BC program starts Oct 1.","email"],
+ ["gear","装備 / ギア","Please wear your safety gear.","ops"],
+ ["thank you for your hard work","お疲れ様です","Thank you for your hard work today.","email"],
+ ["please make sure","必ず〜してください","Please make sure to scan all bags.","email"],
+ ["look forward to","楽しみにしている / お待ちしています","I look forward to your reply.","email"],
+ ["feel free to","お気軽に〜してください","Feel free to reach out anytime.","email"],
+ ["as soon as possible","できるだけ早く (ASAP)","Please reply as soon as possible.","email"],
+ ["prior to","〜の前に","Prior to dispatch, check the plan.","email"],
+ ["on behalf of","〜を代表して","On behalf of the team, thank you.","email"],
+ ["based on","〜に基づいて","Based on the forecast, we adjusted.","email"],
+ ["in charge of","〜を担当して","Who is in charge of this station?","email"],
+ ["please find attached","添付をご確認ください","Please find the assignment attached.","email"],
+ ["wake up","目が覚める / 起きる","I wake up at 6.","daily","daily"],
+ ["get up","起き上がる / 起床する","I couldn't get up this morning.","daily","daily"],
+ ["stay up","夜更かしする","I stayed up too late.","daily","daily"],
+ ["sleep in","寝坊する / ゆっくり寝る","I slept in on Sunday.","daily","daily"],
+ ["get dressed","服を着る / 着替える","Get dressed, we're leaving.","daily","daily"],
+ ["brush my teeth","歯を磨く","I brush my teeth after breakfast.","daily","daily"],
+ ["take a shower","シャワーを浴びる","I take a shower every morning.","daily","daily"],
+ ["commute","通勤する","I commute by train.","daily","daily"],
+ ["run late","遅れそう / 遅刻しそう","Sorry, I'm running late.","daily","daily"],
+ ["grab a coffee","コーヒーを買う・飲む","Let's grab a coffee.","daily","daily"],
+ ["skip breakfast","朝食を抜く","I skipped breakfast today.","daily","daily"],
+ ["hang out","ぶらぶら過ごす / 遊ぶ","We hung out at the mall.","daily","daily"],
+ ["chill","のんびりする","I just want to chill tonight.","daily","daily"],
+ ["head home","帰宅する","I'm heading home now.","daily","daily"],
+ ["do the dishes","皿を洗う","Can you do the dishes?","daily","daily"],
+ ["take out the trash","ゴミを出す","Did you take out the trash?","daily","daily"],
+ ["do the laundry","洗濯をする","I need to do the laundry.","daily","daily"],
+ ["run errands","用事を済ませる","I have to run errands today.","daily","daily"],
+ ["drop by","立ち寄る","I'll drop by later.","daily","daily"],
+ ["stop by","ちょっと寄る","Can you stop by the store?","daily","daily"],
+ ["pick up","(人・物を)迎えに行く・受け取る","I'll pick you up at 7.","daily","daily"],
+ ["drop off","(人・物を)送り届ける","I'll drop off the package.","daily","daily"],
+ ["put away","片付ける / しまう","Put away your clothes.","daily","daily"],
+ ["clean up","きれいにする / 片付ける","Let's clean up the room.","daily","daily"],
+ ["throw away","捨てる","Throw away the old food.","daily","daily"],
+ ["run out of","(物を)切らす","We ran out of milk.","daily","daily"],
+ ["look for","探す","I'm looking for my keys.","daily","daily"],
+ ["figure out","解決する / 理解する","I'll figure it out.","daily","daily"],
+ ["work out","運動する / うまくいく","I work out twice a week.","daily","daily"],
+ ["warm up","温める / 準備運動する","Warm up before running.","daily","daily"],
+ ["catch up","追いつく / 近況を話す","Let's catch up soon.","daily","daily"],
+ ["give up","あきらめる","Don't give up.","daily","daily"],
+ ["hold on","ちょっと待つ","Hold on a second.","daily","daily"],
+ ["calm down","落ち着く","Calm down, it's okay.","daily","daily"],
+ ["cheer up","元気づける / 元気を出す","Cheer up!","daily","daily"],
+ ["show up","現れる / 来る","He didn't show up.","daily","daily"],
+ ["get along","仲良くやる","They get along well.","daily","daily"],
+ ["deal with","対処する","I'll deal with it.","daily","daily"],
+ ["take care of","世話する / 面倒を見る","Take care of yourself.","daily","daily"],
+ ["look after","面倒を見る","Can you look after the kids?","daily","daily"],
+ ["get rid of","処分する / なくす","Get rid of the clutter.","daily","daily"],
+ ["make up my mind","決心する","I can't make up my mind.","daily","daily"],
+ ["change my mind","気が変わる","I changed my mind.","daily","daily"],
+ ["run into","偶然会う","I ran into an old friend.","daily","daily"],
+ ["get together","集まる","Let's get together this weekend.","daily","daily"],
+ ["hang up","電話を切る","She hung up on me.","daily","daily"],
+ ["try on","試着する","Can I try this on?","daily","daily"],
+ ["check in","チェックインする","We check in at 3pm.","daily","daily"],
+ ["check out","チェックアウトする / 見てみる","Check out this place.","daily","daily"],
+ ["tired","疲れた","I'm so tired today.","daily","daily"],
+ ["exhausted","疲れ果てた","I'm completely exhausted.","daily","daily"],
+ ["sleepy","眠い","I feel sleepy.","daily","daily"],
+ ["hungry","お腹が空いた","I'm getting hungry.","daily","daily"],
+ ["thirsty","のどが渇いた","I'm thirsty.","daily","daily"],
+ ["full","満腹の","I'm full, thanks.","daily","daily"],
+ ["busy","忙しい","I'm busy this week.","daily","daily"],
+ ["free","暇な / 空いている","Are you free tonight?","daily","daily"],
+ ["bored","退屈した","I'm so bored.","daily","daily"],
+ ["excited","わくわくした","I'm excited for the trip.","daily","daily"],
+ ["nervous","緊張した / 不安な","I'm nervous about it.","daily","daily"],
+ ["worried","心配した","I'm worried about you.","daily","daily"],
+ ["relaxed","リラックスした","I feel relaxed.","daily","daily"],
+ ["upset","動揺した / 怒った","She's upset with me.","daily","daily"],
+ ["annoyed","イライラした","I'm annoyed by the noise.","daily","daily"],
+ ["grateful","感謝している","I'm grateful for your help.","daily","daily"],
+ ["lucky","運がいい","You're so lucky.","daily","daily"],
+ ["sick","具合が悪い","I feel sick.","daily","daily"],
+ ["dizzy","めまいがする","I feel dizzy.","daily","daily"],
+ ["sore","痛い / 筋肉痛の","My legs are sore.","daily","daily"],
+ ["crowded","混雑した","The train was crowded.","daily","daily"],
+ ["cheap","安い","This is really cheap.","daily","daily"],
+ ["expensive","高い","That's too expensive.","daily","daily"],
+ ["delicious","おいしい","This is delicious.","daily","daily"],
+ ["spicy","辛い","It's too spicy.","daily","daily"],
+ ["fresh","新鮮な","The fish is fresh.","daily","daily"],
+ ["cozy","居心地のいい","This cafe is cozy.","daily","daily"],
+ ["messy","散らかった","My desk is messy.","daily","daily"],
+ ["tidy","整理された","Keep your room tidy.","daily","daily"],
+ ["quiet","静かな","It's very quiet here.","daily","daily"],
+ ["noisy","うるさい","The kids are noisy.","daily","daily"],
+ ["humid","蒸し暑い","It's humid today.","daily","daily"],
+ ["chilly","肌寒い","It's chilly outside.","daily","daily"],
+ ["sunny","晴れの","It's sunny today.","daily","daily"],
+ ["cloudy","曇りの","It's cloudy.","daily","daily"],
+ ["rainy","雨の","It's a rainy day.","daily","daily"],
+ ["freezing","凍えるほど寒い","It's freezing outside.","daily","daily"],
+ ["boiling","うだるほど暑い","It's boiling today.","daily","daily"],
+ ["on time","時間どおりに","The train was on time.","daily","daily"],
+ ["in time","間に合って","We got there in time.","daily","daily"],
+ ["meanwhile","その間に","Meanwhile, I cooked dinner.","daily","daily"],
+ ["eventually","最終的に / やがて","Eventually it worked out.","daily","daily"],
+ ["lately","最近","I've been busy lately.","daily","daily"],
+ ["recently","最近","I recently moved.","daily","daily"],
+ ["hardly","ほとんど〜ない","I hardly slept.","daily","daily"],
+ ["barely","かろうじて / ほとんど〜ない","I barely made it.","daily","daily"],
+ ["usually","たいてい","I usually walk to work.","daily","daily"],
+ ["rarely","めったに〜ない","I rarely eat out.","daily","daily"],
+ ["once in a while","たまに","We meet once in a while.","daily","daily"],
+ ["the other day","先日","I saw him the other day.","daily","daily"],
+ ["these days","最近は","Prices are high these days.","daily","daily"],
+ ["groceries","食料品","I bought some groceries.","daily","daily"],
+ ["leftovers","残り物","I ate the leftovers.","daily","daily"],
+ ["takeout","持ち帰り(料理)","Let's get takeout tonight.","daily","daily"],
+ ["for here or to go","店内か持ち帰りか","For here or to go?","daily","daily"],
+ ["sold out","売り切れ","It's sold out.","daily","daily"],
+ ["out of stock","在庫切れ","That item is out of stock.","daily","daily"],
+ ["in stock","在庫あり","Is it in stock?","daily","daily"],
+ ["on sale","セール中","These shoes are on sale.","daily","daily"],
+ ["discount","割引","Is there a discount?","daily","daily"],
+ ["refund","返金","I'd like a refund.","daily","daily"],
+ ["exchange","交換する","Can I exchange this?","daily","daily"],
+ ["receipt","レシート / 領収書","Keep the receipt.","daily","daily"],
+ ["change","お釣り / 小銭","Here's your change.","daily","daily"],
+ ["wallet","財布","I left my wallet at home.","daily","daily"],
+ ["split the bill","割り勘にする","Let's split the bill.","daily","daily"],
+ ["tip","チップ","Should I leave a tip?","daily","daily"],
+ ["refill","おかわり / 補充","Can I get a refill?","daily","daily"],
+ ["traffic","渋滞 / 交通","There's a lot of traffic.","daily","daily"],
+ ["subway","地下鉄","I take the subway.","daily","daily"],
+ ["platform","(駅の)ホーム","The train leaves from platform 3.","daily","daily"],
+ ["transfer","乗り換える","Transfer at the next station.","daily","daily"],
+ ["fare","運賃","The fare went up.","daily","daily"],
+ ["one way","片道","A one-way ticket, please.","daily","daily"],
+ ["round trip","往復","A round-trip ticket.","daily","daily"],
+ ["get off","降りる","Get off at the next stop.","daily","daily"],
+ ["get on","乗る","Get on the bus here.","daily","daily"],
+ ["miss the train","電車に乗り遅れる","I missed the train.","daily","daily"],
+ ["umbrella","傘","Bring an umbrella.","daily","daily"],
+ ["charger","充電器","Where's my charger?","daily","daily"],
+ ["outlet","コンセント","Is there an outlet nearby?","daily","daily"],
+ ["blanket","毛布","I need a blanket.","daily","daily"],
+ ["pillow","枕","This pillow is too soft.","daily","daily"],
+ ["alarm","目覚まし / アラーム","Set an alarm for 7.","daily","daily"],
+ ["fridge","冷蔵庫","It's in the fridge.","daily","daily"],
+ ["microwave","電子レンジ","Heat it in the microwave.","daily","daily"],
+ ["faucet","蛇口","The faucet is leaking.","daily","daily"],
+ ["light","電気 / 明かり","Turn off the light.","daily","daily"],
+ ["never mind","気にしないで / なんでもない","Never mind, forget it.","daily","daily"],
+ ["no big deal","大したことない","It's no big deal.","daily","daily"],
+ ["take it easy","無理しないで / のんびりね","Take it easy this weekend.","daily","daily"],
+ ["my bad","私のミス / ごめん","My bad, I forgot.","daily","daily"],
+ ["you bet","もちろん","You bet I'll come.","daily","daily"],
+ ["sounds good","いいね / それでいこう","Sounds good to me.","daily","daily"],
+ ["got it","わかった / 了解","Got it, thanks.","daily","daily"],
+ ["makes sense","なるほど / 筋が通る","That makes sense.","daily","daily"],
+ ["up to you","君次第 / お任せ","It's up to you.","daily","daily"],
+ ["either way","どちらでも / いずれにせよ","Either way is fine.","daily","daily"],
+ ["let me see","えーと / どれどれ","Let me see... yes.","daily","daily"],
+ ["hang in there","頑張って / 踏ん張って","Hang in there!","daily","daily"],
+ ["no worries","気にしないで / 大丈夫","No worries at all.","daily","daily"],
+ ["just in case","念のため","Bring cash just in case.","daily","daily"],
+ ["by the way","ところで","By the way, are you free?","daily","daily"],
+ ["on second thought","やっぱり / 考え直すと","On second thought, let's wait.","daily","daily"],
+ ["kind of","なんとなく / ちょっと","I'm kind of tired.","daily","daily"],
+ ["sort of","まあ / いくらか","It's sort of complicated.","daily","daily"],
+ ["a bit","少し","I'm a bit busy.","daily","daily"],
+ ["way too","〜すぎる","It's way too hot.","daily","daily"],
+ ["at least","少なくとも","At least it's not raining.","daily","daily"],
+ ["more or less","だいたい / おおむね","It's more or less done.","daily","daily"],
+ ["I can't wait","待ちきれない / 楽しみ","I can't wait for the trip.","daily","daily"],
+ ["I'd rather","むしろ〜したい","I'd rather stay home.","daily","daily"],
+ ["I feel like","〜したい気分","I feel like pizza tonight.","daily","daily"],
+ ["I'm into","〜にハマっている","I'm into hiking lately.","daily","daily"],
+ ["count me in","参加するよ","Count me in!","daily","daily"],
+ ["count me out","私は抜けるよ","Count me out this time.","daily","daily"],
+ ["good for you","よかったね","Good for you!","daily","daily"],
+ ["that's too bad","それは残念","That's too bad.","daily","daily"],
+ ["what's up","どうしたの / 元気?","Hey, what's up?","daily","daily"],
+ ["how's it going","調子どう?","How's it going?","daily","daily"],
+ ["take care","気をつけてね / お大事に","Take care!","daily","daily"],
+ ["catch you later","またあとで","Catch you later.","daily","daily"],
+ ["see you around","またね","See you around.","daily","daily"],
+ ["long time no see","久しぶり","Long time no see!","daily","daily"],
+ ["help yourself","ご自由にどうぞ","Help yourself to snacks.","daily","daily"],
+ ["after you","お先にどうぞ","After you.","daily","daily"],
+ ["suit yourself","好きにして","Fine, suit yourself.","daily","daily"],
+ ["fair enough","なるほど / それもそうだ","Fair enough.","daily","daily"],
+ ["no offense","悪気はないけど","No offense, but...","daily","daily"],
+ ["just kidding","冗談だよ","Just kidding!","daily","daily"],
+ ["come on","おいおい / さあ","Come on, let's go.","daily","daily"],
+ ["give me a hand","手を貸して","Can you give me a hand?","daily","daily"],
+ ["keep in touch","連絡取り合おう","Let's keep in touch.","daily","daily"],
+ ["feel under the weather","体調が優れない","I feel under the weather.","daily","daily"],
+ ["decide","決める","I can't decide.","daily","daily"],
+ ["choose","選ぶ","Choose one.","daily","daily"],
+ ["prepare","準備する","Prepare for the trip.","daily","daily"],
+ ["explain","説明する","Let me explain.","daily","daily"],
+ ["describe","描写する","Describe it to me.","daily","daily"],
+ ["suggest","提案する","I suggest we wait.","daily","daily"],
+ ["recommend","勧める","I recommend this book.","daily","daily"],
+ ["mention","言及する","He mentioned it.","daily","daily"],
+ ["promise","約束する","I promise.","daily","daily"],
+ ["agree","同意する","I agree with you.","daily","daily"],
+ ["disagree","反対する","I disagree.","daily","daily"],
+ ["realize","気づく","I realized my mistake.","daily","daily"],
+ ["recognize","認識する / 見分ける","I didn't recognize you.","daily","daily"],
+ ["remember","覚えている","Do you remember?","daily","daily"],
+ ["forget","忘れる","I forgot my keys.","daily","daily"],
+ ["remind","思い出させる","Remind me later.","daily","daily"],
+ ["imagine","想像する","Imagine that.","daily","daily"],
+ ["expect","期待する / 予想する","I expect rain.","daily","daily"],
+ ["prefer","好む","I prefer tea.","daily","daily"],
+ ["wish","願う","I wish I could.","daily","daily"],
+ ["hope","望む","I hope so.","daily","daily"],
+ ["worry","心配する","Don't worry.","daily","daily"],
+ ["bother","悩ませる / 手間をかける","Sorry to bother you.","daily","daily"],
+ ["relax","くつろぐ","Just relax.","daily","daily"],
+ ["enjoy","楽しむ","Enjoy your meal.","daily","daily"],
+ ["celebrate","祝う","Let's celebrate.","daily","daily"],
+ ["apologize","謝る","I apologize.","daily","daily"],
+ ["complain","不満を言う","Stop complaining.","daily","daily"],
+ ["argue","口論する","They always argue.","daily","daily"],
+ ["blame","責める","Don't blame me.","daily","daily"],
+ ["admit","認める","I admit I was wrong.","daily","daily"],
+ ["refuse","断る","She refused.","daily","daily"],
+ ["allow","許可する","Allow me.","daily","daily"],
+ ["avoid","避ける","Avoid the traffic.","daily","daily"],
+ ["prevent","防ぐ","Prevent mistakes.","daily","daily"],
+ ["protect","守る","Protect yourself.","daily","daily"],
+ ["repair","修理する","Repair the bike.","daily","daily"],
+ ["replace","取り替える","Replace the battery.","daily","daily"],
+ ["improve","改善する","Improve your English.","daily","daily"],
+ ["increase","増える / 増やす","Prices increased.","daily","daily"],
+ ["decrease","減る / 減らす","Sales decreased.","daily","daily"],
+ ["continue","続ける","Continue reading.","daily","daily"],
+ ["stop","止める","Stop it.","daily","daily"],
+ ["finish","終える","Finish your work.","daily","daily"],
+ ["complete","完了する","Complete the form.","daily","daily"],
+ ["start","始める","Start now.","daily","daily"],
+ ["begin","始まる","The show begins.","daily","daily"],
+ ["return","戻る / 返す","Return the book.","daily","daily"],
+ ["borrow","借りる","Can I borrow this?","daily","daily"],
+ ["lend","貸す","Lend me a pen.","daily","daily"],
+ ["owe","借りがある","I owe you one.","daily","daily"],
+ ["earn","稼ぐ","I earn enough.","daily","daily"],
+ ["save","貯める / 節約する","Save money.","daily","daily"],
+ ["spend","使う","I spent too much.","daily","daily"],
+ ["waste","無駄にする","Don't waste time.","daily","daily"],
+ ["afford","(金銭的に)余裕がある","I can't afford it.","daily","daily"],
+ ["cost","費用がかかる","It costs a lot.","daily","daily"],
+ ["carry","運ぶ","Carry this bag.","daily","daily"],
+ ["lift","持ち上げる","Lift with your legs.","daily","daily"],
+ ["push","押す","Push the door.","daily","daily"],
+ ["pull","引く","Pull the handle.","daily","daily"],
+ ["hold","持つ / 抱える","Hold this.","daily","daily"],
+ ["drop","落とす","I dropped my phone.","daily","daily"],
+ ["catch","捕まえる","Catch the ball.","daily","daily"],
+ ["throw","投げる","Throw it here.","daily","daily"],
+ ["hit","打つ / ぶつける","I hit my head.","daily","daily"],
+ ["break","壊す","Don't break it.","daily","daily"],
+ ["fix","直す","Fix the problem.","daily","daily"],
+ ["build","建てる / 作る","Build a house.","daily","daily"],
+ ["cut","切る","Cut the paper.","daily","daily"],
+ ["fold","折りたたむ","Fold the clothes.","daily","daily"],
+ ["tie","結ぶ","Tie your shoes.","daily","daily"],
+ ["wrap","包む","Wrap the gift.","daily","daily"],
+ ["pour","注ぐ","Pour the water.","daily","daily"],
+ ["mix","混ぜる","Mix well.","daily","daily"],
+ ["bake","焼く(オーブン)","Bake a cake.","daily","daily"],
+ ["boil","茹でる / 沸かす","Boil the water.","daily","daily"],
+ ["fry","炒める / 揚げる","Fry the egg.","daily","daily"],
+ ["taste","味わう / 味がする","Taste this.","daily","daily"],
+ ["smell","匂う / 嗅ぐ","It smells good.","daily","daily"],
+ ["touch","触る","Don't touch.","daily","daily"],
+ ["notice","気づく","I noticed a change.","daily","daily"],
+ ["stare","じっと見る","Don't stare.","daily","daily"],
+ ["glance","ちらっと見る","She glanced at me.","daily","daily"],
+ ["shout","叫ぶ","Don't shout.","daily","daily"],
+ ["whisper","ささやく","She whispered.","daily","daily"],
+ ["laugh","笑う","We laughed.","daily","daily"],
+ ["cry","泣く","The baby cried.","daily","daily"],
+ ["smile","微笑む","She smiled.","daily","daily"],
+ ["nod","うなずく","He nodded.","daily","daily"],
+ ["wave","手を振る","I waved goodbye.","daily","daily"],
+ ["shake","振る / 揺れる","Shake the bottle.","daily","daily"],
+ ["bend","曲げる","Bend your knees.","daily","daily"],
+ ["climb","登る","Climb the stairs.","daily","daily"],
+ ["jump","跳ぶ","Jump over it.","daily","daily"],
+ ["fall","落ちる / 転ぶ","I fell down.","daily","daily"],
+ ["slip","滑る","I slipped on ice.","daily","daily"],
+ ["hurry","急ぐ","Hurry up.","daily","daily"],
+ ["rush","急ぐ / 殺到する","No need to rush.","daily","daily"],
+ ["wait","待つ","Wait here.","daily","daily"],
+ ["follow","ついていく / 従う","Follow me.","daily","daily"],
+ ["lead","導く","Lead the way.","daily","daily"],
+ ["join","参加する","Join us.","daily","daily"],
+ ["gather","集まる / 集める","Gather around.","daily","daily"],
+ ["share","共有する / 分ける","Share the food.","daily","daily"],
+ ["offer","申し出る / 提供する","Can I offer help?","daily","daily"],
+ ["accept","受け入れる","Accept the offer.","daily","daily"],
+ ["reject","拒否する","They rejected it.","daily","daily"],
+ ["receive","受け取る","I received it.","daily","daily"],
+ ["deliver","届ける","Deliver the mail.","daily","daily"],
+ ["send","送る","Send it now.","daily","daily"],
+ ["bring","持ってくる","Bring your ID.","daily","daily"],
+ ["collect","集める","Collect the data.","daily","daily"],
+ ["gain","得る","Gain experience.","daily","daily"],
+ ["lose","失う / 負ける","Don't lose it.","daily","daily"],
+ ["win","勝つ","We won.","daily","daily"],
+ ["beat","打ち負かす","We beat them.","daily","daily"],
+ ["compare","比べる","Compare prices.","daily","daily"],
+ ["measure","測る","Measure the length.","daily","daily"],
+ ["count","数える","Count the money.","daily","daily"],
+ ["calculate","計算する","Calculate the total.","daily","daily"],
+ ["estimate","見積もる","Estimate the cost.","daily","daily"],
+ ["guess","推測する","Guess what!","daily","daily"],
+ ["solve","解決する","Solve the puzzle.","daily","daily"],
+ ["cause","引き起こす / 原因","What caused it?","daily","daily"],
+ ["affect","影響する","It affects sleep.","daily","daily"],
+ ["depend","頼る / 次第だ","It depends.","daily","daily"],
+ ["belong","属する","This belongs to me.","daily","daily"],
+ ["contain","含む","It contains sugar.","daily","daily"],
+ ["include","含む","Tax is included.","daily","daily"],
+ ["exclude","除外する","Exclude weekends.","daily","daily"],
+ ["require","必要とする","This requires effort.","daily","daily"],
+ ["provide","提供する","Provide details.","daily","daily"],
+ ["supply","供給する","Supply the goods.","daily","daily"],
+ ["produce","生産する","Produce results.","daily","daily"],
+ ["create","創る","Create a plan.","daily","daily"],
+ ["design","設計する","Design the layout.","daily","daily"],
+ ["develop","開発する","Develop skills.","daily","daily"],
+ ["manage","管理する / なんとかする","I'll manage.","daily","daily"],
+ ["organize","整理する","Organize the files.","daily","daily"],
+ ["arrange","手配する / 並べる","Arrange a meeting.","daily","daily"],
+ ["plan","計画する","Plan ahead.","daily","daily"],
+ ["schedule","予定を組む","Schedule a call.","daily","daily"],
+ ["book","予約する","Book a table.","daily","daily"],
+ ["cancel","取り消す","Cancel the order.","daily","daily"],
+ ["postpone","延期する","Postpone the trip.","daily","daily"],
+ ["attend","出席する","Attend the meeting.","daily","daily"],
+ ["participate","参加する","Participate actively.","daily","daily"],
+ ["skip","飛ばす / さぼる","Skip the line.","daily","daily"],
+ ["difficult","難しい","This is difficult.","daily","daily"],
+ ["easy","簡単な","It's easy.","daily","daily"],
+ ["hard","難しい / 硬い","It's hard.","daily","daily"],
+ ["simple","単純な","Keep it simple.","daily","daily"],
+ ["complicated","複雑な","It's complicated.","daily","daily"],
+ ["important","重要な","This is important.","daily","daily"],
+ ["necessary","必要な","Is it necessary?","daily","daily"],
+ ["useful","役に立つ","Very useful.","daily","daily"],
+ ["useless","役に立たない","It's useless.","daily","daily"],
+ ["possible","可能な","Is it possible?","daily","daily"],
+ ["impossible","不可能な","That's impossible.","daily","daily"],
+ ["common","一般的な","It's common.","daily","daily"],
+ ["rare","まれな","A rare case.","daily","daily"],
+ ["similar","似ている","They're similar.","daily","daily"],
+ ["different","違う","We're different.","daily","daily"],
+ ["same","同じ","The same thing.","daily","daily"],
+ ["special","特別な","A special day.","daily","daily"],
+ ["normal","普通の","It's normal.","daily","daily"],
+ ["strange","奇妙な","That's strange.","daily","daily"],
+ ["weird","変な","So weird.","daily","daily"],
+ ["obvious","明らかな","It's obvious.","daily","daily"],
+ ["clear","明確な / 澄んだ","Is it clear?","daily","daily"],
+ ["sure","確信して","Are you sure?","daily","daily"],
+ ["certain","確かな","I'm certain.","daily","daily"],
+ ["correct","正しい","That's correct.","daily","daily"],
+ ["wrong","間違った","You're wrong.","daily","daily"],
+ ["true","本当の","Is it true?","daily","daily"],
+ ["false","偽の","That's false.","daily","daily"],
+ ["real","本物の","Is it real?","daily","daily"],
+ ["fake","偽物の","It's fake.","daily","daily"],
+ ["main","主な","The main point.","daily","daily"],
+ ["major","主要な","A major issue.","daily","daily"],
+ ["minor","ささいな","A minor problem.","daily","daily"],
+ ["huge","巨大な","A huge crowd.","daily","daily"],
+ ["tiny","極小の","A tiny room.","daily","daily"],
+ ["wide","広い","A wide road.","daily","daily"],
+ ["narrow","狭い","A narrow path.","daily","daily"],
+ ["deep","深い","Deep water.","daily","daily"],
+ ["shallow","浅い","Shallow end.","daily","daily"],
+ ["heavy","重い","A heavy bag.","daily","daily"],
+ ["strong","強い","A strong wind.","daily","daily"],
+ ["weak","弱い","A weak signal.","daily","daily"],
+ ["soft","柔らかい","A soft pillow.","daily","daily"],
+ ["smooth","滑らかな","A smooth ride.","daily","daily"],
+ ["rough","粗い / 大変な","A rough day.","daily","daily"],
+ ["sharp","鋭い","A sharp knife.","daily","daily"],
+ ["safe","安全な","Stay safe.","daily","daily"],
+ ["dangerous","危険な","It's dangerous.","daily","daily"],
+ ["careful","注意深い","Be careful.","daily","daily"],
+ ["polite","礼儀正しい","Be polite.","daily","daily"],
+ ["rude","失礼な","Don't be rude.","daily","daily"],
+ ["honest","正直な","Be honest.","daily","daily"],
+ ["fair","公平な","That's not fair.","daily","daily"],
+ ["kind","親切な","You're so kind.","daily","daily"],
+ ["mean","意地悪な","Don't be mean.","daily","daily"],
+ ["smart","賢い","She's smart.","daily","daily"],
+ ["stupid","ばかげた","A stupid mistake.","daily","daily"],
+ ["clever","利口な","A clever idea.","daily","daily"],
+ ["proud","誇りに思う","I'm proud of you.","daily","daily"],
+ ["shy","恥ずかしがりの","He's shy.","daily","daily"],
+ ["brave","勇敢な","Be brave.","daily","daily"],
+ ["confident","自信がある","Stay confident.","daily","daily"],
+ ["patient","忍耐強い","Be patient.","daily","daily"],
+ ["curious","好奇心のある","I'm curious.","daily","daily"],
+ ["mistake","間違い","My mistake.","daily","daily"],
+ ["problem","問題","No problem.","daily","daily"],
+ ["solution","解決策","Find a solution.","daily","daily"],
+ ["reason","理由","What's the reason?","daily","daily"],
+ ["purpose","目的","On purpose.","daily","daily"],
+ ["result","結果","The result was good.","daily","daily"],
+ ["effect","効果 / 影響","Side effect.","daily","daily"],
+ ["chance","機会 / 見込み","Give me a chance.","daily","daily"],
+ ["opportunity","機会","A great opportunity.","daily","daily"],
+ ["choice","選択","It's your choice.","daily","daily"],
+ ["decision","決定","A big decision.","daily","daily"],
+ ["advice","助言","Good advice.","daily","daily"],
+ ["opinion","意見","In my opinion.","daily","daily"],
+ ["idea","考え","Good idea.","daily","daily"],
+ ["goal","目標","Reach your goal.","daily","daily"],
+ ["effort","努力","Nice effort.","daily","daily"],
+ ["progress","進歩","Making progress.","daily","daily"],
+ ["success","成功","Wish you success.","daily","daily"],
+ ["experience","経験","Great experience.","daily","daily"],
+ ["skill","技能","A useful skill.","daily","daily"],
+ ["knowledge","知識","Share knowledge.","daily","daily"],
+ ["ability","能力","The ability to learn.","daily","daily"],
+ ["habit","習慣","A good habit.","daily","daily"],
+ ["routine","日課","Daily routine.","daily","daily"],
+ ["meeting","会議","In a meeting.","daily","daily"],
+ ["appointment","予約 / 約束","A doctor's appointment.","daily","daily"],
+ ["event","行事","A big event.","daily","daily"],
+ ["situation","状況","A tough situation.","daily","daily"],
+ ["condition","状態 / 条件","In good condition.","daily","daily"],
+ ["environment","環境","A clean environment.","daily","daily"],
+ ["neighbor","隣人","A friendly neighbor.","daily","daily"],
+ ["stranger","見知らぬ人","Talk to a stranger.","daily","daily"],
+ ["guest","客","A welcome guest.","daily","daily"],
+ ["customer","顧客","A happy customer.","daily","daily"],
+ ["crowd","群衆","A big crowd.","daily","daily"],
+ ["view","景色 / 見解","A nice view.","daily","daily"],
+ ["sound","音","A loud sound.","daily","daily"],
+ ["shape","形","A round shape.","daily","daily"],
+ ["size","大きさ","What size?","daily","daily"],
+ ["weight","重さ","Watch your weight.","daily","daily"],
+ ["distance","距離","A long distance.","daily","daily"],
+ ["space","空間","Not enough space.","daily","daily"],
+ ["amount","量","A large amount.","daily","daily"],
+ ["number","数","A large number.","daily","daily"],
+ ["rate","割合 / 速度","At this rate.","daily","daily"],
+ ["level","水準","A high level.","daily","daily"],
+ ["quality","品質","Good quality.","daily","daily"],
+ ["value","価値","Good value.","daily","daily"],
+ ["price","価格","A fair price.","daily","daily"],
+ ["budget","予算","Over budget.","daily","daily"],
+ ["account","口座 / アカウント","Check your account.","daily","daily"],
+ ["payment","支払い","Late payment.","daily","daily"],
+ ["bill","請求書 / 勘定","Pay the bill.","daily","daily"],
+ ["actually","実は","Actually, I agree.","daily","daily"],
+ ["basically","基本的に","Basically, yes.","daily","daily"],
+ ["probably","たぶん","Probably not.","daily","daily"],
+ ["maybe","もしかしたら","Maybe later.","daily","daily"],
+ ["perhaps","おそらく","Perhaps so.","daily","daily"],
+ ["certainly","確かに","Certainly.","daily","daily"],
+ ["obviously","明らかに","Obviously true.","daily","daily"],
+ ["especially","特に","Especially now.","daily","daily"],
+ ["particularly","とりわけ","Particularly good.","daily","daily"],
+ ["however","しかし","However, it's late.","daily","daily"],
+ ["although","〜だけれど","Although it's hard.","daily","daily"],
+ ["though","〜だけど","It's fine, though.","daily","daily"],
+ ["therefore","したがって","Therefore, we wait.","daily","daily"],
+ ["instead","代わりに","Let's go instead.","daily","daily"],
+ ["otherwise","さもないと","Hurry, otherwise we're late.","daily","daily"],
+ ["besides","その上","Besides, it's cheap.","daily","daily"],
+ ["anyway","とにかく","Anyway, let's go.","daily","daily"],
+ ["somehow","なんとかして","Somehow it worked.","daily","daily"],
+ ["suddenly","突然","Suddenly it rained.","daily","daily"],
+ ["immediately","すぐに","Come immediately.","daily","daily"],
+ ["gradually","徐々に","It improved gradually.","daily","daily"],
+ ["nearly","ほぼ","Nearly done.","daily","daily"],
+ ["almost","ほとんど","Almost there.","daily","daily"],
+ ["quite","かなり","Quite good.","daily","daily"],
+ ["pretty","かなり","Pretty nice.","daily","daily"],
+ ["fairly","まあまあ","Fairly easy.","daily","daily"],
+ ["rather","むしろ / かなり","Rather cold.","daily","daily"],
+ ["exactly","まさに","Exactly right.","daily","daily"],
+ ["directly","直接","Go directly.","daily","daily"],
+ ["clearly","はっきりと","Speak clearly.","daily","daily"]
+];
+
+/* ---------- storage ---------- */
+const KEY="aki_vocab_v1";
+/* ---------- 品詞分類 (pos) ---------- */
+const _ADJ=new Set("tired exhausted sleepy hungry thirsty full busy free bored excited nervous worried relaxed upset annoyed grateful lucky sick dizzy sore crowded cheap expensive delicious spicy fresh cozy messy tidy quiet noisy humid chilly sunny cloudy rainy freezing boiling difficult easy hard simple complicated important necessary useful useless possible impossible common rare similar different same special normal strange weird obvious clear sure certain correct wrong true false real fake main major minor huge tiny wide narrow deep shallow heavy light strong weak soft smooth rough sharp safe dangerous careful polite rude honest fair kind mean smart stupid clever proud shy brave confident patient curious available expected planned delayed controllable external outstanding redundant overdue".split(" "));
+const _ADV=new Set("actually basically probably maybe perhaps certainly obviously especially particularly however although though therefore instead otherwise besides anyway somehow suddenly immediately gradually nearly almost quite pretty fairly rather exactly directly clearly usually rarely lately recently hardly barely eventually meanwhile accordingly overall".split(" "));
+function classifyPos(en,ja){
+  const w=(en||"").trim().toLowerCase();
+  if(/\s/.test(w)) return "phrase";
+  if(_ADV.has(w)) return "adv";
+  if(_ADJ.has(w)) return "adj";
+  const head=(ja||"").split("/")[0].trim();
+  if(head.indexOf("する")>=0 || /[るうくぐすつぬぶむ]$/.test(head)) return "verb";
+  return "noun";
+}
+let DB=load();
+function load(){
+  let d=null;
+  try{const raw=localStorage.getItem(KEY);if(raw)d=JSON.parse(raw);}
+  catch(e){console.warn("vocab data corrupted, reinitializing from seed:",e); try{const raw=localStorage.getItem(KEY); if(raw)localStorage.setItem(KEY+"_corrupted_"+Date.now(),raw);}catch(_e){} }
+  if(d && d.cards){
+    // 既存カードに分野(grp)をバックフィル（旧データは業務扱い）
+    const seedGrp={}; SEED.forEach(sd=>{seedGrp[sd[0].toLowerCase()]=sd[4]||"work";});
+    let changed=false;
+    d.cards.forEach(c=>{ if(!c.grp){ c.grp=seedGrp[(c.en||"").toLowerCase()]||"work"; changed=true; } if(!c.pos){ c.pos=classifyPos(c.en,c.ja); changed=true; }});
+    // 既存進捗は保持したまま、新しいシード語だけ追記マージ
+    const have=new Set(d.cards.map(c=>(c.en||"").toLowerCase()));
+    let added=0;
+    SEED.forEach(sd=>{ if(!have.has(sd[0].toLowerCase())){
+      d.cards.push({id:d.nextId++,en:sd[0],ja:sd[1],ex:sd[2]||"",cat:sd[3]||"",grp:sd[4]||"work",pos:classifyPos(sd[0],sd[1]),lv:0,ok:0,ng:0,last:0});added++;changed=true; }});
+    if(changed)save(d);
+    return d;
+  }
+  const cards=SEED.map((s,i)=>({id:i+1,en:s[0],ja:s[1],ex:s[2]||"",cat:s[3]||"",grp:s[4]||"work",pos:classifyPos(s[0],s[1]),lv:0,ok:0,ng:0,last:0}));
+  const nd={cards,streak:0,lastDay:"",nextId:cards.length+1};
+  save(nd);return nd;
+}
+function save(d){try{localStorage.setItem(KEY,JSON.stringify(d||DB));}catch(e){var m=document.getElementById("manageMsg");if(m)m.textContent="⚠ 保存に失敗しました（容量超過等）: "+e.message;console.warn("vocab save failed:",e);}}
+function today(){return new Date().toISOString().slice(0,10);}
+
+/* ---------- speech (Web Speech API) ---------- */
+let SPEAK_ON=(localStorage.getItem("aki_vocab_speak")||"1")==="1";
+let RATE=parseFloat(localStorage.getItem("aki_vocab_rate")||"0.9");
+let enVoice=null;
+function pickVoice(){
+  if(!("speechSynthesis" in window))return;
+  const vs=speechSynthesis.getVoices();
+  enVoice = vs.find(v=>/en[-_]US/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null;
+}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+function speak(text){
+  if(!("speechSynthesis" in window)||!text)return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang="en-US";u.rate=RATE;if(enVoice)u.voice=enVoice;
+    speechSynthesis.speak(u);
+  }catch(e){console.warn("speak failed:",e);}
+}
+function speakCur(){ if(cur) speak(viewMode==="sentence"&&cur.ex?cur.ex:cur.en); }
+
+function escRe(x){return (x+"").replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
+// 例文中の見出し語を太字化（cur.en の語幹に一致する部分を <b> で囲む。HTMLはエスケープ済み前提）
+function boldEx(word, exSafe){
+  if(!exSafe) return null;
+  let w=word.split("/")[0].replace(/\(.*?\)/g,"").trim();
+  if(!/\s/.test(w)){ let rw=new RegExp("(\\b"+escRe(w)+"\\w*)","i");
+    if(rw.test(exSafe)) return exSafe.replace(rw,"<b>$1</b>"); }
+  let re=new RegExp("("+escRe(w)+")","i");
+  if(re.test(exSafe)) return exSafe.replace(re,"<b>$1</b>");
+  let toks=w.split(/\s+/).filter(t=>t.length>2);
+  for(let t of toks){ let r=new RegExp("(\\b"+escRe(t)+"\\w*)","i"); if(r.test(exSafe)) return exSafe.replace(r,"<b>$1</b>"); }
+  let stem=w.slice(0,Math.max(4,w.length-2));
+  let rs=new RegExp("(\\b\\w*"+escRe(stem)+"\\w*)","i");
+  if(rs.test(exSafe)) return exSafe.replace(rs,"<b>$1</b>");
+  return exSafe;
+}
+
+/* streak */
+(function touchStreak(){
+  const t=today();
+  if(DB.lastDay!==t){
+    const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+    DB.streak=(DB.lastDay===y)?(DB.streak+1):1;
+    DB.lastDay=t;save();
+  }
+})();
+
+/* ---------- study engine ---------- */
+// Leitner intervals per level (days). Lv5 = mastered.
+const INTERVAL=[0,0.007,1,3,7,14]; // Lv0/1 same-session, Lv2+ spaced by days
+let mode="due", group="all", viewMode="word", posFilter="all", queue=[], cur=null, revealed=false, timer=null, deadline=0, expired=false, settled=false;
+
+function isDue(c){
+  if(c.lv===0)return true;
+  const days=INTERVAL[Math.min(c.lv,5)];
+  return (Date.now()-c.last) >= days*864e5;
+}
+function buildQueue(){
+  let pool=DB.cards.slice();
+  if(group!=="all") pool=pool.filter(c=>(c.grp||"work")===group);
+  if(posFilter!=="all") pool=pool.filter(c=>(c.pos||"noun")===posFilter);
+  if(mode==="weak") pool=pool.filter(c=>c.ng>0 && c.lv<3);
+  else if(mode==="due") pool=pool.filter(isDue);
+  // due & weak fall back to nothing -> allow all if empty handled by caller
+  pool.sort((a,b)=>a.lv-b.lv || (b.ng-b.ok)-(a.ng-a.ok) || Math.random()-.5);
+  return pool.slice(0,20);
+}
+function startSession(){
+  document.getElementById("doneMsg").style.display="none";
+  document.getElementById("cardArea").style.display="block";
+  queue=buildQueue();
+  if(DB.cards.length===0){document.getElementById("cardArea").style.display="none";
+    document.getElementById("doneMsg").style.display="block";
+    document.getElementById("doneStat").textContent="単語がありません。「追加」タブから登録してください。";return;}
+  if(queue.length===0 && mode!=="all"){let pl=DB.cards.slice();if(group!=="all")pl=pl.filter(c=>(c.grp||"work")===group);if(posFilter!=="all")pl=pl.filter(c=>(c.pos||"noun")===posFilter);queue=pl.sort(()=>Math.random()-.5).slice(0,20);}
+  if(queue.length===0){
+    // nothing due -> praise
+    document.getElementById("cardArea").style.display="none";
+    document.getElementById("doneMsg").style.display="block";
+    document.getElementById("doneStat").textContent=
+      (mode==="due")?"今出題すべきカードはありません。よくできました！時間を置くとまた復習対象が出ます。":"該当カードがありません。";
+    return;
+  }
+  next();
+}
+function next(){
+  if(queue.length===0){finish();return;}
+  cur=queue.shift();revealed=false;expired=false;
+  document.getElementById("cat").textContent=((cur.grp==="daily")?"🏠 日常":"💼 Amazon業務")+(cur.cat?(" · "+cur.cat):"");
+  const fEl=document.getElementById("front");
+  if(viewMode==="sentence" && cur.ex){
+    fEl.classList.add("sentence");
+    fEl.innerHTML=boldEx(cur.en, esc(cur.ex));
+  }else{
+    fEl.classList.remove("sentence");
+    fEl.textContent=cur.en;
+  }
+  document.getElementById("lvpill").textContent="Lv"+cur.lv;
+  document.getElementById("mean").textContent=cur.ja;
+  document.getElementById("ex").textContent=(viewMode==="sentence")?("単語: "+cur.en):cur.ex;
+  document.getElementById("back").classList.remove("show");
+  document.getElementById("expired").textContent="";
+  document.getElementById("hint").textContent="分かれば → 、分からなければ ← 。2秒経過で自動的に「要復習」。";
+  settled=false;
+  document.getElementById("btnStart").style.display="none";
+  document.getElementById("btnFront").style.display="flex";
+  document.getElementById("btnNext").style.display="none";
+  document.getElementById("peekWrap").style.display="block";
+  if(SPEAK_ON) speak(viewMode==="sentence"&&cur.ex?cur.ex:cur.en);
+  startTimer();
+}
+function startTimer(){
+  const bar=document.getElementById("tbar");
+  bar.style.transition="none";bar.style.width="100%";
+  deadline=Date.now()+2000;
+  requestAnimationFrame(()=>{bar.style.transition="width 2s linear";bar.style.width="0%";});
+  clearTimeout(timer);
+  timer=setTimeout(()=>{expired=true;onExpire();},2000);
+}
+function stopTimer(){clearTimeout(timer);const bar=document.getElementById("tbar");
+  const w=bar.getBoundingClientRect().width;bar.style.transition="none";bar.style.width=w+"px";}
+function onExpire(){
+  if(settled||!cur)return;
+  document.getElementById("expired").textContent="⏱ 2秒経過 → 要復習";
+  settle(false,true);
+}
+function peekMeaning(){
+  if(!cur)return;
+  document.getElementById("back").classList.add("show");
+  document.getElementById("peekWrap").style.display="none";
+}
+function knowIt(){ if(cur && !settled) settle(true,false); }
+function dontKnow(){ if(cur && !settled) settle(false,false); }
+function settle(good,auto){
+  settled=true;stopTimer();
+  document.getElementById("back").classList.add("show");
+  const c=DB.cards.find(x=>x.id===cur.id);
+  if(good){c.ok++;c.lv=Math.min(5,c.lv+1);
+    document.getElementById("hint").textContent="◎ 正解！ Lv"+c.lv+" に上がりました。";}
+  else{c.ng++;c.lv=Math.max(0,c.lv-1);
+    document.getElementById("hint").textContent=(auto?"時間切れ。":"")+"意味を確認 → この語は次回の学習でまた出ます。";}
+  c.last=Date.now();save();refreshStats();
+  document.getElementById("btnFront").style.display="none";
+  document.getElementById("peekWrap").style.display="none";
+  document.getElementById("btnNext").style.display="flex";
+}
+function finish(){
+  document.getElementById("cardArea").style.display="none";
+  document.getElementById("doneMsg").style.display="block";
+  const m=DB.cards.filter(c=>c.lv>=5).length;
+  document.getElementById("doneStat").textContent=
+    "習得(Lv5): "+m+" / "+DB.cards.length+"語。連続学習 "+DB.streak+"日目。";
+  refreshStats();
+}
+
+/* ---------- stats ---------- */
+function refreshStats(){
+  const cs=DB.cards;
+  document.getElementById("s-known").textContent=cs.filter(c=>c.lv>=1).length;
+  document.getElementById("s-master").textContent=cs.filter(c=>c.lv>=5).length;
+  document.getElementById("s-total").textContent=cs.length;
+  const w=cs.filter(c=>(c.grp||"work")==="work").length, dl=cs.filter(c=>c.grp==="daily").length;
+  const tp=document.getElementById("s-total").parentElement; const te=tp&&tp.querySelector?tp.querySelector("small"):null;
+  if(te)te.textContent="総単語 (💼"+w+"/🏠"+dl+")";
+  document.getElementById("s-due").textContent=cs.filter(isDue).length;
+  document.getElementById("s-streak").textContent=DB.streak;
+  const pct=cs.length?Math.round(cs.filter(c=>c.lv>=5).length/cs.length*100):0;
+  document.getElementById("mfill").style.width=pct+"%";
+}
+
+/* ---------- list tab ---------- */
+const LVCOL=["#555","#c0392b","#e67e22","#f1c40f","#27ae60","#2ecc71"];
+let listFilter="all", listGrp="all";
+function renderList(){
+  let cs=DB.cards.slice();
+  if(listGrp!=="all")cs=cs.filter(c=>(c.grp||"work")===listGrp);
+  if(listFilter==="mastered")cs=cs.filter(c=>c.lv>=5);
+  else if(listFilter==="weak")cs=cs.filter(c=>c.ng>0&&c.lv<5);
+  else if(listFilter==="learning")cs=cs.filter(c=>c.lv>0&&c.lv<5);
+  else if(listFilter==="new")cs=cs.filter(c=>(c.ok+c.ng)===0);
+  cs.sort((a,b)=>a.lv-b.lv||b.ng-a.ng);
+  const body=document.getElementById("listBody");body.innerHTML="";
+  cs.forEach(c=>{
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td><span class="lv" style="background:${LVCOL[c.lv]};color:#111">${c.lv}</span></td>
+      <td style="font-size:11px;color:var(--sub)">${c.grp==="daily"?"🏠":"💼"}</td>
+      <td>${esc(c.en)}</td><td>${esc(c.ja)}</td>
+      <td style="color:var(--sub)">${c.ok}/${c.ng}</td>
+      <td><button class="dbtn" onclick="delCard(${c.id})">削除</button></td>`;
+    body.appendChild(tr);
+  });
+  // level segment bar
+  const seg=document.getElementById("lvseg");seg.innerHTML="";
+  for(let l=0;l<=5;l++){const n=DB.cards.filter(c=>c.lv===l).length;
+    if(n===0)continue;const i=document.createElement("i");
+    i.style.background=LVCOL[l];i.style.width=(n/DB.cards.length*100)+"%";
+    i.title="Lv"+l+": "+n;seg.appendChild(i);}
+  const fl={all:"全部",mastered:"習得(Lv5)",weak:"苦手",learning:"学習中",new:"未学習"}[listFilter];
+  document.getElementById("listNote").textContent=
+    "["+fl+"] 表示 "+cs.length+"語 ／ 全"+DB.cards.length+"語中 習得(Lv5) "+DB.cards.filter(c=>c.lv>=5).length+"語。下ほど要復習。";
+}
+function esc(s){return (s+"").replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));}
+function delCard(id){if(!confirm("この単語を削除しますか？"))return;
+  DB.cards=DB.cards.filter(c=>c.id!==id);save();renderList();refreshStats();}
+
+/* ---------- manage tab ---------- */
+function addOne(){
+  const en=document.getElementById("addEn").value.trim();
+  const ja=document.getElementById("addJa").value.trim();
+  const ex=document.getElementById("addEx").value.trim();
+  if(!en||!ja){msg("英語と意味は必須です。");return;}
+  if(DB.cards.some(c=>c.en.toLowerCase()===en.toLowerCase())){msg("「"+en+"」は既にあります。");return;}
+  DB.cards.push({id:DB.nextId++,en,ja,ex,cat:"",grp:"work",pos:classifyPos(en,ja),lv:0,ok:0,ng:0,last:0});
+  save();refreshStats();
+  document.getElementById("addEn").value="";document.getElementById("addJa").value="";document.getElementById("addEx").value="";
+  msg("追加しました: "+en);
+}
+function importBulk(){
+  const lines=document.getElementById("bulk").value.split("\n");
+  let added=0,skip=0;
+  lines.forEach(line=>{
+    if(!line.trim())return;
+    // タブがあればタブ区切り優先。3列目以降は例文として結合（例文内のカンマで崩れない）
+    const hasTab=line.includes("\t");
+    const p=(hasTab?line.split("\t"):line.split(",")).map(x=>x.trim());
+    const en=p[0],ja=p[1],ex=p.slice(2).join(hasTab?" ":", ").trim();
+    if(!en||!ja){skip++;return;}
+    if(DB.cards.some(c=>c.en.toLowerCase()===en.toLowerCase())){skip++;return;}
+    DB.cards.push({id:DB.nextId++,en,ja,ex,cat:"",grp:"work",pos:classifyPos(en,ja),lv:0,ok:0,ng:0,last:0});added++;
+  });
+  save();refreshStats();
+  document.getElementById("bulk").value="";
+  msg("インポート完了: 追加"+added+"件 / スキップ"+skip+"件");
+}
+function exportAll(){
+  const txt=DB.cards.map(c=>[c.en,c.ja,c.ex].join("\t")).join("\n");
+  const blob=new Blob([txt],{type:"text/plain"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="aki_vocab_backup.tsv";a.click();
+}
+function resetProgress(){
+  if(!confirm("全単語の学習レベル・成績をリセットしますか？（単語自体は残ります）"))return;
+  DB.cards.forEach(c=>{c.lv=0;c.ok=0;c.ng=0;c.last=0;});save();refreshStats();msg("進捗をリセットしました。");
+}
+function msg(t){document.getElementById("manageMsg").textContent=t;}
+
+/* ---------- tabs & keys ---------- */
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  t.classList.add("active");
+  const id=t.dataset.tab;
+  ["study","list","manage"].forEach(s=>document.getElementById(s).style.display=(s===id)?"block":"none");
+  if(id==="list")renderList();
+});
+document.querySelectorAll("#listFilters .chip").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll("#listFilters .chip").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");listFilter=c.dataset.f;renderList();
+});
+document.querySelectorAll("#listGrpFilters .chip").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll("#listGrpFilters .chip").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");listGrp=c.dataset.g;renderList();
+});
+document.querySelectorAll(".chip[data-mode]").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll(".chip[data-mode]").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");mode=c.dataset.mode;refreshStats();
+});
+document.querySelectorAll(".chip[data-grp]").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll(".chip[data-grp]").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");group=c.dataset.grp;refreshStats();
+});
+document.querySelectorAll(".chip[data-view]").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll(".chip[data-view]").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");viewMode=c.dataset.view;
+});
+document.querySelectorAll(".chip[data-pos]").forEach(c=>c.onclick=()=>{
+  document.querySelectorAll(".chip[data-pos]").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");posFilter=c.dataset.pos;refreshStats();
+});
+(function initSpeechUI(){
+  const a=document.getElementById("autoSpeak");
+  const r=document.getElementById("speakRate");
+  const rates=[["ゆっくり",0.7],["標準",0.9],["速い",1.1]];
+  function reflectA(){a.classList.toggle("active",SPEAK_ON);
+    a.textContent="出題時に自動読み上げ "+(SPEAK_ON?"ON":"OFF");}
+  function reflectR(){const cur=rates.find(x=>x[1]===RATE)||rates[1];r.textContent="速さ: "+cur[0];}
+  reflectA();reflectR();
+  a.onclick=()=>{SPEAK_ON=!SPEAK_ON;localStorage.setItem("aki_vocab_speak",SPEAK_ON?"1":"0");reflectA();
+    if(SPEAK_ON&&cur)speakCur();};
+  r.onclick=()=>{let i=rates.findIndex(x=>x[1]===RATE);i=(i+1)%rates.length;
+    RATE=rates[i][1];localStorage.setItem("aki_vocab_rate",RATE);reflectR();if(cur)speakCur();};
+})();
+document.addEventListener("keydown",e=>{
+  if(document.getElementById("study").style.display==="none")return;
+  if(document.getElementById("cardArea").style.display==="none")return;
+  if(e.code==="KeyS"){speakCur();return;}
+  if(document.getElementById("btnNext").style.display!=="none"){
+    if(e.code==="Space"||e.code==="ArrowRight"||e.code==="ArrowLeft"){e.preventDefault();next();}
+    return;
+  }
+  if(!cur||settled)return;
+  if(e.code==="ArrowRight"){e.preventDefault();knowIt();}
+  else if(e.code==="ArrowLeft"){e.preventDefault();dontKnow();}
+  else if(e.code==="Space"){e.preventDefault();peekMeaning();}
+});
+refreshStats();
+</script>
+</body>
+</html>
