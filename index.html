@@ -211,6 +211,17 @@ stabilize	安定させる	We plan to readjust the Ov to stabilize the SPR."></te
       <button class="dbtn" onclick="resetProgress()">進捗だけリセット</button>
     </div>
     <p class="note" id="manageMsg"></p>
+
+    <h3 style="font-size:15px;margin-top:26px;">☁ クラウド同期（PC ↔ スマホ）</h3>
+    <p class="note">GitHubトークンで両端末の学習記録を同期します。<a href="https://github.com/settings/tokens/new?scopes=gist&description=aki-vocab" target="_blank" style="color:var(--accent)">こちらでトークンを作成</a>（scopeは<b>gist</b>のみ・期限は<b>90日など</b>を推奨）→下に貼付。<br><b>1台目:</b> トークンだけ入れて「接続/作成」→表示されたGist IDを控える。<b>2台目:</b> トークン＋そのGist IDを入れて「接続/作成」。<br>⚠ トークンは端末内に平文保存されます。<b>共有PCでは使わない</b>でください。期限切れ時は再作成して貼り直し。</p>
+    <input class="f" id="ghToken" type="password" placeholder="GitHubトークン (ghp_... または github_pat_...)" autocomplete="off">
+    <input class="f" id="gistId" placeholder="Gist ID（2台目のみ入力。1台目は空欄）">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="abtn" onclick="syncConnect()">接続 / 作成</button>
+      <button class="dbtn" onclick="syncNow()">今すぐ同期</button>
+      <button class="dbtn" onclick="syncDisconnect()">トークン削除</button>
+    </div>
+    <p class="note" id="syncStatus"></p>
   </section>
 
 </div>
@@ -890,12 +901,12 @@ let DB=load();
 function load(){
   let d=null;
   try{const raw=localStorage.getItem(KEY);if(raw)d=JSON.parse(raw);}
-  catch(e){console.warn("vocab data corrupted, reinitializing from seed:",e); try{const raw=localStorage.getItem(KEY); if(raw)localStorage.setItem(KEY+"_corrupted_"+Date.now(),raw);}catch(_e){} }
+  catch(e){console.warn("vocab data corrupted, reinitializing from seed:",e); try{const raw=localStorage.getItem(KEY); if(raw){var _bk=KEY+"_corrupted_"+Date.now();localStorage.setItem(_bk,raw);window.__corruptBackup=_bk;}}catch(_e){} }
   if(d && d.cards){
     // 既存カードに分野(grp)をバックフィル（旧データは業務扱い）
     const seedGrp={}; SEED.forEach(sd=>{seedGrp[sd[0].toLowerCase()]=sd[4]||"work";});
     let changed=false;
-    d.cards.forEach(c=>{ if(!c.grp){ c.grp=seedGrp[(c.en||"").toLowerCase()]||"work"; changed=true; } if(!c.pos){ c.pos=classifyPos(c.en,c.ja); changed=true; }});
+    d.cards.forEach(c=>{ if(!c.grp){ c.grp=seedGrp[(c.en||"").toLowerCase()]||"work"; changed=true; } if(!c.pos){ c.pos=classifyPos(c.en,c.ja); changed=true; } if(c.upd===undefined){ c.upd=c.last||0; changed=true; }});
     // 既存進捗は保持したまま、新しいシード語だけ追記マージ
     const have=new Set(d.cards.map(c=>(c.en||"").toLowerCase()));
     let added=0;
@@ -908,8 +919,83 @@ function load(){
   const nd={cards,streak:0,lastDay:"",nextId:cards.length+1};
   save(nd);return nd;
 }
-function save(d){try{localStorage.setItem(KEY,JSON.stringify(d||DB));}catch(e){var m=document.getElementById("manageMsg");if(m)m.textContent="⚠ 保存に失敗しました（容量超過等）: "+e.message;console.warn("vocab save failed:",e);}}
+function save(d,noSync){try{localStorage.setItem(KEY,JSON.stringify(d||DB));if(!noSync&&typeof scheduleSync==="function")scheduleSync();}catch(e){var m=document.getElementById("manageMsg");if(m)m.textContent="⚠ 保存に失敗しました（容量超過等）: "+e.message;console.warn("vocab save failed:",e);}}
 function today(){return new Date().toISOString().slice(0,10);}
+
+/* ---------- クラウド同期 (GitHub Gist) ---------- */
+const SKEY_TOKEN="aki_vocab_token", SKEY_GIST="aki_vocab_gist", SKEY_SYNCED="aki_vocab_synced";
+var GH_TOKEN=localStorage.getItem(SKEY_TOKEN)||"";
+var GIST_ID=localStorage.getItem(SKEY_GIST)||"";
+let _syncTimer=null, _syncing=false;
+function syncStatus(t){const e=document.getElementById("syncStatus");if(e)e.textContent=t;}
+function syncEnabled(){return !!(GH_TOKEN&&GIST_ID);}
+async function ghJson(r){try{return await r.json();}catch(e){throw new Error("サーバー応答が不正です");}}
+function ghErr(r){if(r.status===401)return "トークンが無効です";if(r.status===404)return "Gist IDが違います";if(r.status===403)return "レート制限です。しばらく待って再試行してください";return "HTTP "+r.status;}
+async function ghFetch(url,opts){opts=opts||{};opts.headers=Object.assign({"Authorization":"token "+GH_TOKEN,"Accept":"application/vnd.github+json"},opts.headers||{});
+  for(var attempt=0;attempt<2;attempt++){
+    var ctrl=new AbortController();var to=setTimeout(function(){ctrl.abort();},10000);opts.signal=ctrl.signal;
+    try{var r=await fetch(url,opts);clearTimeout(to);
+      if((r.status>=500||r.status===403)&&attempt===0){syncStatus("⚠ 一時エラー、再試行中…");await new Promise(function(res){setTimeout(res,1500);});continue;}
+      return r;
+    }catch(e){clearTimeout(to);if(attempt===0&&e.name!=="AbortError"){await new Promise(function(res){setTimeout(res,1500);});continue;}throw e;}
+  }
+}
+function scheduleSync(){if(!syncEnabled())return;if(_syncTimer)clearTimeout(_syncTimer);_syncTimer=setTimeout(function(){syncNow();},4000);}
+function mergeRemote(remote){
+  if(!remote||!remote.cards)return false;
+  const tu=c=>(c.upd||c.last||0);
+  const act=c=>((c.ok||0)+(c.ng||0));
+  const map={};
+  DB.cards.forEach(c=>{map[(c.en||"").toLowerCase()]=c;});
+  // 更新時刻が新しい方を採用。同時刻なら学習回数(ok+ng)が多い方を残す（無条件上書き回避）
+  remote.cards.forEach(rc=>{const k=(rc.en||"").toLowerCase();const ex=map[k];if(!ex||tu(rc)>tu(ex)||(tu(rc)===tu(ex)&&act(rc)>act(ex)))map[k]=rc;});
+  const merged=Object.values(map);
+  merged.forEach((c,i)=>{c.id=i+1;if(c.grp===undefined)c.grp="work";if(c.pos===undefined)c.pos=classifyPos(c.en,c.ja);if(c.upd===undefined)c.upd=c.last||0;});
+  DB.cards=merged;DB.nextId=merged.length+1;
+  if(cur){const nc=DB.cards.find(c=>(c.en||"").toLowerCase()===(cur.en||"").toLowerCase());if(nc)cur=nc;}
+  return true;
+}
+async function syncPull(silent){
+  if(!syncEnabled())return;
+  try{syncStatus("⏳ 取得中…");const r=await ghFetch("https://api.github.com/gists/"+GIST_ID);
+    if(!r.ok)throw new Error(ghErr(r));
+    const j=await ghJson(r);const f=j.files&&j.files["aki_vocab.json"];
+    if(f&&f.content){mergeRemote(JSON.parse(f.content));save(null,true);refreshStats();renderList();}
+    localStorage.setItem(SKEY_SYNCED,Date.now());syncStatus("✓ 同期済 "+new Date().toLocaleTimeString());
+  }catch(e){syncStatus("⚠ 取得失敗: "+(e.name==="AbortError"?"タイムアウト(10秒)":e.message));}
+}
+async function syncPush(){
+  if(!syncEnabled()||_syncing)return;_syncing=true;
+  try{syncStatus("⏳ 保存中…");
+    const body={files:{"aki_vocab.json":{content:JSON.stringify(DB)}}};
+    const r=await ghFetch("https://api.github.com/gists/"+GIST_ID,{method:"PATCH",body:JSON.stringify(body)});
+    if(!r.ok)throw new Error(ghErr(r));
+    localStorage.setItem(SKEY_SYNCED,Date.now());syncStatus("✓ 同期済 "+new Date().toLocaleTimeString());
+  }catch(e){syncStatus("⚠ 保存失敗: "+(e.name==="AbortError"?"タイムアウト(10秒)":e.message));}
+  _syncing=false;
+}
+async function syncNow(){if(!syncEnabled()){syncStatus("トークンと接続が必要です");return;}await syncPull(true);await syncPush();}
+function syncDisconnect(){GH_TOKEN="";GIST_ID="";localStorage.removeItem(SKEY_TOKEN);localStorage.removeItem(SKEY_GIST);var t=document.getElementById("ghToken");if(t)t.value="";var g=document.getElementById("gistId");if(g)g.value="";syncStatus("トークンとGist接続を削除しました。");}
+async function syncConnect(){
+  const tok=document.getElementById("ghToken").value.trim();
+  if(tok)GH_TOKEN=tok;
+  if(!GH_TOKEN){syncStatus("トークンを入力してください");return;}
+  localStorage.setItem(SKEY_TOKEN,GH_TOKEN);
+  const gid=document.getElementById("gistId").value.trim();
+  try{
+    if(gid){GIST_ID=gid;localStorage.setItem(SKEY_GIST,GIST_ID);syncStatus("⏳ 接続中…");await syncPull(true);}
+    else{
+      syncStatus("⏳ 新規Gist作成中…");
+      const body={description:"Aki 2秒単語帳 データ",public:false,files:{"aki_vocab.json":{content:JSON.stringify(DB)}}};
+      const r=await ghFetch("https://api.github.com/gists",{method:"POST",body:JSON.stringify(body)});
+      if(!r.ok)throw new Error(ghErr(r));
+      const j=await ghJson(r);GIST_ID=j.id;localStorage.setItem(SKEY_GIST,GIST_ID);
+      const gi=document.getElementById("gistId");if(gi)gi.value=GIST_ID;
+      syncStatus("✓ 作成完了！ このGist IDを他の端末の欄に入れて接続 → "+GIST_ID);
+    }
+  }catch(e){syncStatus("⚠ 接続失敗: "+(e.name==="AbortError"?"タイムアウト(10秒)":e.message));}
+}
+
 
 /* ---------- speech (Web Speech API) ---------- */
 let SPEAK_ON=(localStorage.getItem("aki_vocab_speak")||"1")==="1";
@@ -936,11 +1022,13 @@ function escRe(x){return (x+"").replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
 // 例文中の見出し語を太字化（cur.en の語幹に一致する部分を <b> で囲む。HTMLはエスケープ済み前提）
 function boldEx(word, exSafe){
   if(!exSafe) return null;
-  let w=word.split("/")[0].replace(/\(.*?\)/g,"").trim();
+  let w=(word||"").split("/")[0].replace(/\(.*?\)/g,"").trim();
+  if(!w) return exSafe;
   if(!/\s/.test(w)){ let rw=new RegExp("(\\b"+escRe(w)+"\\w*)","i");
     if(rw.test(exSafe)) return exSafe.replace(rw,"<b>$1</b>"); }
   let re=new RegExp("("+escRe(w)+")","i");
   if(re.test(exSafe)) return exSafe.replace(re,"<b>$1</b>");
+  if(w.length<=3) return exSafe; // 短語は語幹/部分一致で誤太字化しやすいので完全一致のみ
   let toks=w.split(/\s+/).filter(t=>t.length>2);
   for(let t of toks){ let r=new RegExp("(\\b"+escRe(t)+"\\w*)","i"); if(r.test(exSafe)) return exSafe.replace(r,"<b>$1</b>"); }
   let stem=w.slice(0,Math.max(4,w.length-2));
@@ -1053,7 +1141,7 @@ function settle(good,auto){
     document.getElementById("hint").textContent="◎ 正解！ Lv"+c.lv+" に上がりました。";}
   else{c.ng++;c.lv=Math.max(0,c.lv-1);
     document.getElementById("hint").textContent=(auto?"時間切れ。":"")+"意味を確認 → この語は次回の学習でまた出ます。";}
-  c.last=Date.now();save();refreshStats();
+  c.last=Date.now();c.upd=c.last;save();refreshStats();
   document.getElementById("btnFront").style.display="none";
   document.getElementById("peekWrap").style.display="none";
   document.getElementById("btnNext").style.display="flex";
@@ -1124,7 +1212,7 @@ function addOne(){
   const ex=document.getElementById("addEx").value.trim();
   if(!en||!ja){msg("英語と意味は必須です。");return;}
   if(DB.cards.some(c=>c.en.toLowerCase()===en.toLowerCase())){msg("「"+en+"」は既にあります。");return;}
-  DB.cards.push({id:DB.nextId++,en,ja,ex,cat:"",grp:"work",pos:classifyPos(en,ja),lv:0,ok:0,ng:0,last:0});
+  DB.cards.push({id:DB.nextId++,en,ja,ex,cat:"",grp:"work",pos:classifyPos(en,ja),lv:0,ok:0,ng:0,last:0,upd:Date.now()});
   save();refreshStats();
   document.getElementById("addEn").value="";document.getElementById("addJa").value="";document.getElementById("addEx").value="";
   msg("追加しました: "+en);
@@ -1140,7 +1228,7 @@ function importBulk(){
     const en=p[0],ja=p[1],ex=p.slice(2).join(hasTab?" ":", ").trim();
     if(!en||!ja){skip++;return;}
     if(DB.cards.some(c=>c.en.toLowerCase()===en.toLowerCase())){skip++;return;}
-    DB.cards.push({id:DB.nextId++,en,ja,ex,cat:"",grp:"work",pos:classifyPos(en,ja),lv:0,ok:0,ng:0,last:0});added++;
+    DB.cards.push({id:DB.nextId++,en,ja,ex,cat:"",grp:"work",pos:classifyPos(en,ja),lv:0,ok:0,ng:0,last:0,upd:Date.now()});added++;
   });
   save();refreshStats();
   document.getElementById("bulk").value="";
@@ -1154,7 +1242,7 @@ function exportAll(){
 }
 function resetProgress(){
   if(!confirm("全単語の学習レベル・成績をリセットしますか？（単語自体は残ります）"))return;
-  DB.cards.forEach(c=>{c.lv=0;c.ok=0;c.ng=0;c.last=0;});save();refreshStats();msg("進捗をリセットしました。");
+  DB.cards.forEach(c=>{c.lv=0;c.ok=0;c.ng=0;c.last=0;c.upd=Date.now();});save();refreshStats();msg("進捗をリセットしました。");
 }
 function msg(t){document.getElementById("manageMsg").textContent=t;}
 
@@ -1203,6 +1291,7 @@ document.querySelectorAll(".chip[data-pos]").forEach(c=>c.onclick=()=>{
   r.onclick=()=>{let i=rates.findIndex(x=>x[1]===RATE);i=(i+1)%rates.length;
     RATE=rates[i][1];localStorage.setItem("aki_vocab_rate",RATE);reflectR();if(cur)speakCur();};
 })();
+(function initSync(){if(window.__corruptBackup){var mm=document.getElementById("manageMsg");if(mm)mm.textContent="⚠ 保存データの破損を検出し初期化しました。旧データはブラウザ内キー "+window.__corruptBackup+" に退避済みです。";if(typeof alert==="function"){try{alert("学習データの破損を検出したため初期化しました。旧データは退避済みです（管理タブに退避キーを表示）。");}catch(_a){}}}var t=document.getElementById("ghToken");if(t&&GH_TOKEN)t.value=GH_TOKEN;var g=document.getElementById("gistId");if(g&&GIST_ID)g.value=GIST_ID;if(syncEnabled()){syncStatus("接続済み。起動時同期中…");syncPull(true);}else if(GH_TOKEN){syncStatus("トークン保存済み。Gist未接続です。");}})();
 document.addEventListener("keydown",e=>{
   if(document.getElementById("study").style.display==="none")return;
   if(document.getElementById("cardArea").style.display==="none")return;
