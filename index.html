@@ -1057,6 +1057,7 @@ function isDue(c){
   const days=INTERVAL[Math.min(c.lv,5)];
   return (Date.now()-c.last) >= days*864e5;
 }
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function buildQueue(){
   let pool=DB.cards.slice();
   if(group!=="all") pool=pool.filter(c=>(c.grp||"work")===group);
@@ -1064,7 +1065,8 @@ function buildQueue(){
   if(mode==="weak") pool=pool.filter(c=>c.ng>0 && c.lv<3);
   else if(mode==="due") pool=pool.filter(isDue);
   // due & weak fall back to nothing -> allow all if empty handled by caller
-  pool.sort((a,b)=>a.lv-b.lv || (b.ng-b.ok)-(a.ng-a.ok) || Math.random()-.5);
+  shuffle(pool);
+  pool.sort((a,b)=>a.lv-b.lv || (b.ng-b.ok)-(a.ng-a.ok));
   return pool.slice(0,20);
 }
 function startSession(){
@@ -1074,7 +1076,7 @@ function startSession(){
   if(DB.cards.length===0){document.getElementById("cardArea").style.display="none";
     document.getElementById("doneMsg").style.display="block";
     document.getElementById("doneStat").textContent="単語がありません。「追加」タブから登録してください。";return;}
-  if(queue.length===0 && mode!=="all"){let pl=DB.cards.slice();if(group!=="all")pl=pl.filter(c=>(c.grp||"work")===group);if(posFilter!=="all")pl=pl.filter(c=>(c.pos||"noun")===posFilter);queue=pl.sort(()=>Math.random()-.5).slice(0,20);}
+  if(queue.length===0 && mode!=="all"){let pl=DB.cards.slice();if(group!=="all")pl=pl.filter(c=>(c.grp||"work")===group);if(posFilter!=="all")pl=pl.filter(c=>(c.pos||"noun")===posFilter);queue=shuffle(pl).slice(0,20);}
   if(queue.length===0){
     // nothing due -> praise
     document.getElementById("cardArea").style.display="none";
