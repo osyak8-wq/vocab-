@@ -1066,7 +1066,7 @@ function buildQueue(){
   else if(mode==="due") pool=pool.filter(isDue);
   // due & weak fall back to nothing -> allow all if empty handled by caller
   shuffle(pool);
-  pool.sort((a,b)=>a.lv-b.lv || (b.ng-b.ok)-(a.ng-a.ok));
+  if(mode!=="all") pool.sort((a,b)=>a.lv-b.lv || (b.ng-b.ok)-(a.ng-a.ok));
   return pool.slice(0,20);
 }
 function startSession(){
